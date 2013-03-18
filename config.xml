@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
         <module>
-            <name>minicskeletonpro</name>
-            <displayName><![CDATA[Minic Skeleton Pro]]></displayName>
+            <name>minicpromo</name>
+            <displayName><![CDATA[Minic Promo]]></displayName>
             <version><![CDATA[1.0]]></version>
             <description><![CDATA[A skeleton module for Minic Studio with feedback and other stuffs.]]></description>
             <author><![CDATA[minic studio]]></author>

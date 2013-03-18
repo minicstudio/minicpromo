@@ -1,3 +1,3 @@
-<!-- minicskeleton front controller template -->
+<!-- minicpromo front controller template -->
 	{l s='Hello World'}
-<!-- end minicskeleton front controller template -->
+<!-- end minicpromo front controller template -->

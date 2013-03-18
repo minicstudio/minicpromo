@@ -1,0 +1,18 @@
+/* CSS Code */
+.minicpromo{
+	position: fixed;
+	background: #ccc;
+}
+.position-top{
+	top: 0;
+	left: 50%;
+}
+.position-right{
+	right: 0;
+}
+.position-bottom{
+	bottom: 0;
+}
+.position-left{
+	left: 0;
+}

@@ -24,6 +24,9 @@
 	}
 	/* Inputs */
 	#minic input[type="submit"]{
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		-ms-box-sizing: content-box;
 		box-sizing: content-box;
 	}
 	#minic input[type="submit"]:hover{
@@ -136,6 +139,9 @@
 		background: #f8f8f8;
 		border: 1px solid #c5c8d1;
 		margin-bottom: 50px;
+	}
+	.minic-container.visible{
+		display: block;
 	}
 		/* minic top */
 		.minic-top{
