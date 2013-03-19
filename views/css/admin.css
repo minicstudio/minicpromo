@@ -33,6 +33,8 @@
 		cursor: pointer;
 	}
 	#minic input[type="text"],
+	#minic input[type="number"],
+	#minic select,
 	#minic textarea{
 		padding: 5px;
 		outline: none !important;

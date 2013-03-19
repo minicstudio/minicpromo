@@ -58,8 +58,13 @@ jQuery(document).ready(function() {
 	$('.message .close').live('click', function(){
 		$(this).parent().fadeOut();
 	});
+
+// Colorpicker
+	$('.border-color').colorpicker();
+	$('.background-color').colorpicker();
 	
 });
+
 var minic = {
 	/*
 	* Newsletter subscription

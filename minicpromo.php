@@ -147,11 +147,27 @@ class MinicPromo extends Module
 			'description' => Tools::getValue('description'),
 			'activator_title' => Tools::getValue('activator_title'),
 
+			'border' => array(
+				'border_width' => Tools::getValue('border-width'),
+				'border_style' => Tools::getValue('border-style'),
+				'border_color' => Tools::getValue('border-color'),
+				'border_radius' => Tools::getValue('border-radius'),
+				'border_radius_unit' => Tools::getValue('border-radius-unit')
+ 			),
+
 			'position' => Tools::getValue('position'),
-			'width' => Tools::getValue('width'),
-			'width-unit' => Tools::getValue('width-unit'),
-			'height' => Tools::getValue('height'),
-			'height-unit' => Tools::getValue('height-unit')
+
+			'background' => Tools::getValue('background-color'),
+
+			'elem_dimension' => array(
+				'width' => Tools::getValue('width'),
+				'width_unit' => Tools::getValue('width-unit'),
+				'height' => Tools::getValue('height'),
+				'height_unit' => Tools::getValue('height-unit'),
+				'padding' => Tools::getValue('padding'),
+				'padding_unit' => Tools::getValue('padding-unit')
+			),
+			
 		);
 
 		Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc));
@@ -166,9 +182,13 @@ class MinicPromo extends Module
 	{
 		// CSS
 		$this->context->controller->addCSS($this->_path.'views/css/elusive-icons/elusive-webfont.css');
+		$this->context->controller->addCSS($this->_path.'views/css/bootstrap.css');
+		$this->context->controller->addCSS($this->_path.'views/css/color-picker/colorpicker.css');
 		$this->context->controller->addCSS($this->_path.'views/css/admin.css');
 		// JS
 		$this->context->controller->addJquery();
+		$this->context->controller->addJS($this->_path.'views/js/bootstrap.js');
+		$this->context->controller->addJS($this->_path.'views/js/color-picker/bootstrap-colorpicker.js');
 		$this->context->controller->addJS($this->_path.'views/js/admin.js');	
 	}
 

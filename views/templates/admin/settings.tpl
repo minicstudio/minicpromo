@@ -31,7 +31,29 @@
                     <option value="left">left</option>
                 </select>
             </div>
-            <div class="input-holder">
+            <div class="input-holder background">
+                <label>{l s='Background color' mod='minicpromo'}:</label>
+                <input type="text" class="background-color" value="#8fff00" id="background-color" name="background-color">
+            </div>
+            <div class="input-holder border">
+                <label>{l s='Border' mod='minicpromo'}:</label>
+                <input class="title" type="number" name="border-width" value="" size="50" />
+                <select name="border-style">
+                    <option value="solid">solid</option>
+                    <option value="dashed">dashed</option>
+                    <option value="dotted">dotted</option>
+                    <option value="double">double</option>
+                </select>
+                <label>{l s='Border color' mod='minicpromo'}:</label>
+                <input type="text" class="border-color" value="rgb(0,194,255,0.78)" id="border-color" data-color-format="rgba" name="border-color">
+                <label>{l s='Border radius' mod='minicpromo'}:</label>
+                <input class="title" type="number" name="border-radius" value="" size="50" />
+                <select name="border-radius-unit">
+                    <option value="px">px</option>
+                    <option value="%">em</option>
+                </select>
+            </div>
+            <div class="input-holder width">
                 <label>{l s='Minic Promotion modul width' mod='minicpromo'}:</label>
                 <input class="title" type="number" name="width" value="" size="50" />
                 <select name="width-unit">
@@ -39,10 +61,18 @@
                     <option value="%">%</option>
                 </select>
             </div>
-            <div class="input-holder">
+            <div class="input-holder height">
                 <label>{l s='Minic Promotion modul height' mod='minicpromo'}:</label>
                 <input class="title" type="number" name="height" value="" size="50" />
                 <select name="height-unit">
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                </select>
+            </div>
+            <div class="input-holder padding">
+                <label>{l s='Padding' mod='minicpromo'}:</label>
+                <input class="title" type="number" name="padding" value="" size="50" />
+                <select name="padding-unit">
                     <option value="px">px</option>
                     <option value="%">%</option>
                 </select>

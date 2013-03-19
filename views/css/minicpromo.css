@@ -1,7 +1,23 @@
 /* CSS Code */
 .minicpromo{
 	position: fixed;
+}
+.minicpromo .activator{
+	position: absolute;
+	width: 30px;
+	height: 120px;
+	right: -34px;
 	background: #ccc;
+	top: 65px;
+}
+.minicpromo .activator h2{
+	display: block;
+    position: absolute;
+    right: -35px;
+    bottom: 35px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+
 }
 .position-top{
 	top: 0;
@@ -9,10 +25,15 @@
 }
 .position-right{
 	right: 0;
+	top: 50%
 }
 .position-bottom{
 	bottom: 0;
+	left: 50%;
 }
 .position-left{
 	left: 0;
+	top: 50%;
+	border-top-left-radius:0!important;
+	border-bottom-left-radius:0!important;
 }
