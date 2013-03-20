@@ -1,35 +1,47 @@
 /* CSS Code */
 .minicpromo{
 	position: fixed;
+	z-index: 19;
+	-webkit-transition: all 600ms ease-in-out;
+	   -moz-transition: all 600ms ease-in-out;
+        -ms-transition: all 600ms ease-in-out;
+         -o-transition: all 600ms ease-in-out;
+			transition: all 600ms ease-in-out;
 }
 .minicpromo .activator{
 	position: absolute;
-	width: 30px;
-	height: 120px;
-	right: -34px;
+/*	width: 30px;
+	height: 120px;*/
 	background: #ccc;
-	top: 65px;
 }
 .minicpromo .activator h2{
-	display: block;
+	/*display: block;
     position: absolute;
     right: -35px;
     bottom: 35px;
     -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);*/
+    padding: 10px;
 
 }
 .position-top{
 	top: 0;
 	left: 50%;
+	border-top-left-radius:0!important;
+	border-top-right-radius:0!important;
+	
 }
 .position-right{
 	right: 0;
-	top: 50%
+	top: 50%;
+	border-top-right-radius:0!important;
+	border-bottom-right-radius:0!important;
 }
 .position-bottom{
 	bottom: 0;
 	left: 50%;
+	border-bottom-left-radius:0!important;
+	border-bottom-right-radius:0!important;
 }
 .position-left{
 	left: 0;

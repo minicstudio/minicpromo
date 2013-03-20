@@ -143,9 +143,17 @@ class MinicPromo extends Module
 	public function saveSettings()
 	{
 		$promo_desc = array(
-			'title' => Tools::getValue('title'),
 			'description' => Tools::getValue('description'),
 			'activator_title' => Tools::getValue('activator_title'),
+
+			'title' => array(
+				'promo_title' => Tools::getValue('title'),
+				'link' => Tools::getValue('link'),
+				'title_color' => Tools::getValue('title-color'),
+				'title_size' => Tools::getValue('title-font-size'),
+				'title_unit' => Tools::getValue('title-size-unit'),
+				'title_line_height' => Tools::getValue('title-line-height')
+			),
 
 			'border' => array(
 				'border_width' => Tools::getValue('border-width'),
@@ -159,7 +167,7 @@ class MinicPromo extends Module
 
 			'background' => Tools::getValue('background-color'),
 
-			'elem_dimension' => array(
+			'dimension' => array(
 				'width' => Tools::getValue('width'),
 				'width_unit' => Tools::getValue('width-unit'),
 				'height' => Tools::getValue('height'),

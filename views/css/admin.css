@@ -205,8 +205,8 @@
 			.minic-content > div.input-holder label{
 				display: block;
 			}
-			.minic-content > div.input-holder input[type="text"],
-			.minic-content > div.input-holder textarea{
+			.minic-content div.input-holder input[type="text"],
+			.minic-content div.input-holder textarea{
 				clear: both;
 				width: 94%;
 				max-width: 400px;
@@ -220,6 +220,10 @@
 			.minic-content .minic-comments span{
 				color: #000;
 				font-weight: bold;
+			}
+			.minic-content .inner{
+				float: left;
+				width: 50%;
 			}
 		/* minic bottom */
 		.minic-bottom{
