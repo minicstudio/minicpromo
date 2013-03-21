@@ -77,12 +77,53 @@ class MinicPromo extends Module
 				return false;
 		*/
 
+		$promo_desc = array(
+			'description' => 'Your promotion description.',
+			'activator_title' => 'Promotion',
+
+			'title' => array(
+				'promo_title' => 'The title of youre prromotion',
+				'link' => 'http://minic.ro/en/',
+				'title_color' => '#ccc',
+				'title_size' => 24,
+				'title_unit' => 'px',
+				'title_line_height' => 1
+			),
+
+			'border' => array(
+				'border_width' => '1px',
+				'border_style' => 'solid',
+				'border_color' => '#cecece',
+				'border_radius' => 4,
+				'border_radius_unit' => 'px'
+ 			),
+
+			'position' => 'left',
+
+			'background' => '#ccc',
+
+			'dimension' => array(
+				'width' => 300,
+				'width_unit' => 'px',
+				'height' => 250,
+				'height_unit' => 'px',
+				'padding' => 20,
+				'padding_unit' => 'px'
+			),
+			'animation' => array(
+				'duration' => 500,
+				'easing' => 'snap'
+			)
+			
+		);
+
 		if (!parent::install() || 
 			!$this->registerHook('displayFooter') || 
 			!$this->registerHook('displayHeader') || 
 			!$this->registerHook('displayBackOfficeHeader') || 
 			!$this->registerHook('displayAdminHomeQuickLinks') || 
-			!Configuration::updateValue(strtoupper($this->name).'_START', 1))
+			!Configuration::updateValue(strtoupper($this->name).'_START', 1),
+			!Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc)))
 			return false;
 		return true;
 	}
