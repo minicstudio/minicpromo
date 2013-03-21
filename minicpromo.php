@@ -122,7 +122,7 @@ class MinicPromo extends Module
 			!$this->registerHook('displayHeader') || 
 			!$this->registerHook('displayBackOfficeHeader') || 
 			!$this->registerHook('displayAdminHomeQuickLinks') || 
-			!Configuration::updateValue(strtoupper($this->name).'_START', 1),
+			!Configuration::updateValue(strtoupper($this->name).'_START', 1) || 
 			!Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc)))
 			return false;
 		return true;
@@ -178,11 +178,10 @@ class MinicPromo extends Module
 		if(Configuration::get(strtoupper($this->name).'_START') == 1)
 			Configuration::updateValue(strtoupper($this->name).'_START', 0);
 
-		if($error)
-			$this->context->smarty->assign('promo', array(
-				'settings' => Configuration::get('MINIC-PROMOTION'),
-				'error' => $error
-			));
+		$this->context->smarty->assign('promo', array(
+			'settings' => unserialize(Configuration::get('MINIC-PROMOTION')),
+			'error' => $error
+		));
 
 		return $this->display(__FILE__, 'views/templates/admin/minicpromo.tpl');
 	}
@@ -192,7 +191,7 @@ class MinicPromo extends Module
 
 		$error = false;
 		if(!Validate::isUnsignedFloat(Tools::getValue('title-font-size')))
-			$error[] = $this->l('Ez nem jo szam');
+			$error[] = $this->l('Add value between 16 - 40.');
 
 		if(!Validate::isUnsignedFloat(Tools::getValue('border-width')))
 			$error[] = $this->l('Ez nem jo szam');
@@ -300,10 +299,10 @@ class MinicPromo extends Module
 		if(($settings['position'] == 'top' || $settings['position'] == 'bottom'))
 			$axis = 'y';
 
-
+		$dimension = $settings['dimension']['width'] + 2*($settings['border']['border_width'] + $settings['dimension']['padding']);
 		if($axis == 'y')
 			$dimension = $settings['dimension']['height'] + 2*($settings['border']['border_width'] + $settings['dimension']['padding']);
-		$dimension = $settings['dimension']['width'] + 2*($settings['border']['border_width'] + $settings['dimension']['padding']);
+		
 
 
 		$settings['animation']['axis'] = $axis;

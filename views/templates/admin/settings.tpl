@@ -18,29 +18,29 @@
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
                 <div class="input-holder">
                     <label>{l s='Activator Title' mod='minicpromo'}:</label>
-                    <input class="title" type="text" name="activator_title" value="{$promo.settings.title.promo_title}" size="50" />
+                    <input class="title" type="text" name="activator_title" value="{$promo.settings.activator_title}" size="50" />
                 </div>
         		<div class="input-holder title">
         			<label>{l s='Title for Promotion' mod='minicpromo'}:</label>
-        			<input class="title" type="text" name="title" value="" size="50" />
+        			<input class="title" type="text" name="title" value="{$promo.settings.title.promo_title}" size="50" />
         		</div>
                 <div class="input-holder description">
                     <label>{l s='Promotion text' mod='minicpromo'}:</label>
-                    <textarea class="text" name="description" rows="10" cols="49"></textarea>
+                    <textarea class="text" name="description" rows="10" value="{$promo.settings.description}" cols="49"></textarea>
                 </div>
             </div>
             <div class="text-style inner">
                 <div class="input-holder link">
                     <label>{l s='Link for Promotion' mod='minicpromo'}:</label>
-                    <input class="link" type="text" name="link" value="" size="50" />
+                    <input class="link" type="text" name="link" value="{$promo.settings.title.link}" size="50" />
                 </div>
                 <div class="input-holder color">
                     <label>{l s='Title color' mod='minicpromo'}:</label>
-                    <input class="title-color" type="text" value="#ccc" id="title-color" name="title-color" />
+                    <input class="title-color" type="text" value="{$promo.settings.title.title_color}" id="title-color" name="title-color" />
                 </div>
                 <div class="input-holder font-size">
                     <label>{l s='Size of title' mod='minicpromo'}:</label>
-                    <input class="font-size" type="number" name="title-font-size" value="" size="50" step="any" />
+                    <input class="font-size" type="number" name="title-font-size" value="{$promo.settings.title.title_size}" size="50" step="any" />
                     <select name="title-size-unit">
                         <option value="px">px</option>
                         <option value="em">em</option>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="input-holder line-height">
                     <label>{l s='Title line height' mod='minicpromo'}:</label>
-                    <input class="title-line-height" type="number" id="title-line-height" name="title-line-height" step="any" />
+                    <input class="title-line-height" type="number" id="title-line-height" value="{$promo.settings.title.title_line_height}" name="title-line-height" step="any" />
                 </div>
             </div>
         </div>
@@ -65,11 +65,11 @@
                 </div>
                 <div class="input-holder background">
                     <label>{l s='Background color' mod='minicpromo'}:</label>
-                    <input type="text" class="background-color" value="#8fff00" id="background-color" name="background-color">
+                    <input type="text" class="background-color" value="{$promo.settings.background}" id="background-color" name="background-color">
                 </div>
                 <div class="input-holder border">
                     <label>{l s='Border' mod='minicpromo'}:</label>
-                    <input class="title" type="number" name="border-width" value="" size="50" />
+                    <input class="title" type="number" name="border-width" value="{$promo.settings.border.border_width}" size="50" />
                     <select name="border-style">
                         <option value="solid">solid</option>
                         <option value="dashed">dashed</option>
@@ -77,9 +77,9 @@
                         <option value="double">double</option>
                     </select>
                     <label>{l s='Border color' mod='minicpromo'}:</label>
-                    <input type="text" class="border-color" value="#8fff00" id="border-color" name="border-color">
+                    <input type="text" class="border-color" value="{$promo.settings.border.border_color}" id="border-color" name="border-color">
                     <label>{l s='Border radius' mod='minicpromo'}:</label>
-                    <input class="title" type="number" name="border-radius" value="" size="50" />
+                    <input class="title" type="number" name="border-radius" value="{$promo.settings.border.border_radius}" size="50" />
                     <select name="border-radius-unit">
                         <option value="px">px</option>
                         <option value="%">em</option>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="input-holder width">
                     <label>{l s='Minic Promotion modul width' mod='minicpromo'}:</label>
-                    <input class="title" type="number" name="width" value="" size="50" />
+                    <input class="title" type="number" name="width" value="{$promo.settings.dimension.width}" size="50" />
                     <select name="width-unit">
                         <option value="px">px</option>
                         <option value="%">%</option>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="input-holder height">
                     <label>{l s='Minic Promotion modul height' mod='minicpromo'}:</label>
-                    <input class="title" type="number" name="height" value="" size="50" />
+                    <input class="title" type="number" name="height" value="{$promo.settings.dimension.height}" size="50" />
                     <select name="height-unit">
                         <option value="px">px</option>
                         <option value="%">%</option>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="input-holder padding">
                     <label>{l s='Padding' mod='minicpromo'}:</label>
-                    <input class="title" type="number" name="padding" value="" size="50" />
+                    <input class="title" type="number" name="padding" value="{$promo.settings.dimension.padding}" size="50" />
                     <select name="padding-unit">
                         <option value="px">px</option>
                         <option value="%">%</option>
@@ -113,11 +113,11 @@
             <div class="module-animation inner">
                 <div class="input-holder duration">
                     <label>{l s='Animation duration' mod='minicpromo'}:</label>
-                    <input class="duration" type="text" name="duration" value="" size="50" />
+                    <input class="duration" type="text" name="duration" value="{$promo.settings.animation.duration}" size="50" />
                 </div>
                 <div class="input-holder duration">
                     <label>{l s='Animation easing' mod='minicpromo'}:</label>
-                    <input class="easing" type="text" name="easing" value="" size="50" />
+                    <input class="easing" type="text" name="easing" value="{$promo.settings.animation.easing}" size="50" />
                 </div>
             </div>
         </div>
