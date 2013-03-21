@@ -35,8 +35,8 @@
    			margin-left: -{($minic_promo.dimension.width + 2*($minic_promo.dimension.padding) +2*($minic_promo.border.border_width))/2}{$minic_promo.dimension.width_unit};
    		{/if}
 	}
-	.minicpromo.active{
-		{$minic_promo.position}: 0;
+	/*.minicpromo.active{
+		{$minic_promo.position}: 0;*/
 	}
 	.minicpromo .promo-title a{
 		color: {$minic_promo.title.title_color};
@@ -54,11 +54,29 @@
 	}
 </style>
 <script type="text/javascript">
-	jQuery(document).ready(function($) {
+	//<![CDATA[
+	var elemHeight = {if $minic_promo.position == 'bottom'}-{/if}{$minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + 2*($minic_promo.border.border_width)};
+
+	var duration = {$minic_promo.animation.duration};
+	var animEasing = '{$minic_promo.animation.easing}';
+
+	{literal}
+ 	jQuery(document).ready(function($) {
 		$('.minicpromo').click(function() {
 			$(this).toggleClass('active');
+			if ($(this).hasClass('active')) {
+				$(this).transition({y: elemHeight},duration, animEasing);
+			}else{
+				$(this).transition({y: 0},duration, animEasing);
+			};
+		});
+		console.log(elemHeight);
+		console.log(duration);
+		console.log(animEasing);
+			
 	});
-});
+	{/literal}
+	//]]>
 </script>
 <div class="minicpromo position-{$minic_promo.position}">
 	<h2 class="promo-title"><a href="{$minic_promo.title.link}" title="{$minic_promo.title.promo_title}">{$minic_promo.title.promo_title}</a></h2>

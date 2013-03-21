@@ -175,6 +175,10 @@ class MinicPromo extends Module
 				'padding' => Tools::getValue('padding'),
 				'padding_unit' => Tools::getValue('padding-unit')
 			),
+			'animation' => array(
+				'duration' => Tools::getValue('duration'),
+				'easing' => Tools::getValue('easing')
+			)
 			
 		);
 
@@ -219,6 +223,7 @@ class MinicPromo extends Module
 		// CSS
 		$this->context->controller->addCSS($this->_path.'views/css/'.$this->name.'.css');
 		// JS
+		$this->context->controller->addJS($this->_path.'views/js/transit.js');
 		$this->context->controller->addJS($this->_path.'views/js/'.$this->name.'.js');
 	}
 
