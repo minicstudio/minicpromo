@@ -1,4 +1,11 @@
-<div id="promo-settings" class="minic-container visible">
+<div id="promo-settings" class="minic-container visible">{debug}
+    {if $promo.error}
+    <div class="error">
+        {foreach from=$promo.error item=error}            
+        <p>{$error.text}</p>
+        {/foreach}
+    </div>
+    {/if}
 	<form id="form-feed" class="" method="post" action="{$minic.post_action}">
         <div class="minic-top">
             <h3>{l s='Minicpromo Option' mod='minicpromo'}
@@ -11,7 +18,7 @@
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
                 <div class="input-holder">
                     <label>{l s='Activator Title' mod='minicpromo'}:</label>
-                    <input class="title" type="text" name="activator_title" value="" size="50" />
+                    <input class="title" type="text" name="activator_title" value="{$promo.settings.title.promo_title}" size="50" />
                 </div>
         		<div class="input-holder title">
         			<label>{l s='Title for Promotion' mod='minicpromo'}:</label>

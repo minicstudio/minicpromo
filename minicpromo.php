@@ -103,7 +103,7 @@ class MinicPromo extends Module
 	public function getContent()
 	{
 		if(Tools::isSubmit('submitSettings'))
-			$this->saveSettings();
+			$error = $this->saveSettings();
 
 
 		// Smarty for admin
@@ -137,11 +137,25 @@ class MinicPromo extends Module
 		if(Configuration::get(strtoupper($this->name).'_START') == 1)
 			Configuration::updateValue(strtoupper($this->name).'_START', 0);
 
+		if($error)
+			$this->context->smarty->assign('promo', array(
+				'settings' => Configuration::get('MINIC-PROMOTION'),
+				'error' => $error
+			));
+
 		return $this->display(__FILE__, 'views/templates/admin/minicpromo.tpl');
 	}
 
 	public function saveSettings()
 	{
+
+		$error = false;
+		if(!Validate::isUnsignedFloat(Tools::getValue('title-font-size')))
+			$error[] = $this->l('Ez nem jo szam');
+
+		if(!Validate::isUnsignedFloat(Tools::getValue('border-width')))
+			$error[] = $this->l('Ez nem jo szam');
+
 		$promo_desc = array(
 			'description' => Tools::getValue('description'),
 			'activator_title' => Tools::getValue('activator_title'),
@@ -182,7 +196,10 @@ class MinicPromo extends Module
 			
 		);
 
-		Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc));
+		if(!$error)
+			Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc));
+
+		return $error;
 	}
 
 	// BACK OFFICE HOOKS
@@ -232,7 +249,27 @@ class MinicPromo extends Module
 	 */
 	public function hookDisplayFooter($params)
 	{
-		$this->smarty->assign('minic_promo', unserialize(Configuration::get('MINIC-PROMOTION')));
+		// Default axis
+		$axis = 'x';
+
+		// Get settings
+		$settings = unserialize(Configuration::get('MINIC-PROMOTION'));
+
+		// Modify axis
+		if(($settings['position'] == 'top' || $settings['position'] == 'bottom'))
+			$axis = 'y';
+
+
+		if($axis == 'y')
+			$dimension = $settings['dimension']['height'] + 2*($settings['border']['border_width'] + $settings['dimension']['padding']);
+		$dimension = $settings['dimension']['width'] + 2*($settings['border']['border_width'] + $settings['dimension']['padding']);
+
+
+		$settings['animation']['axis'] = $axis;
+		$settings['dimension']['value'] = ($settings['position'] == 'bottom' || $settings['position'] == 'right') ? -$dimension : $dimension;
+
+
+		$this->smarty->assign('minic_promo', $settings);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');
 	}

@@ -55,24 +55,23 @@
 </style>
 <script type="text/javascript">
 	//<![CDATA[
-	var elemHeight = {if $minic_promo.position == 'bottom'}-{/if}{$minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + 2*($minic_promo.border.border_width)};
 
 	var duration = {$minic_promo.animation.duration};
 	var animEasing = '{$minic_promo.animation.easing}';
+	
+	
 
 	{literal}
  	jQuery(document).ready(function($) {
 		$('.minicpromo').click(function() {
 			$(this).toggleClass('active');
 			if ($(this).hasClass('active')) {
-				$(this).transition({y: elemHeight},duration, animEasing);
+				$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
 			}else{
-				$(this).transition({y: 0},duration, animEasing);
+				$(this).transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
 			};
 		});
-		console.log(elemHeight);
-		console.log(duration);
-		console.log(animEasing);
+
 			
 	});
 	{/literal}
