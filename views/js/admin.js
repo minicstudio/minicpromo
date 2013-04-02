@@ -1,4 +1,15 @@
 jQuery(document).ready(function() {
+/* ON/OFF Switch */
+    $('.switch').click(function(){
+    	if($(this).hasClass('active')){
+    		$(this).removeClass('active').addClass('inactive');
+    		$(this).children('input').val(0);
+    	}else{
+    		$(this).removeClass('inactive').addClass('active');
+    		$(this).children('input').val(1);
+    	}
+    });
+    
 // Popup functions
 	// Open
 	$('.open-popup').click(function(e){
@@ -34,7 +45,7 @@ jQuery(document).ready(function() {
 	})
 	$('#sendInfo').click(function(event){
 	    minic.closePopup($(this));
-	    minic.newsletter();
+	    minic.newsletter($('#sendInfoEmail').val());
 	});
 
 // FeedBack
@@ -58,20 +69,30 @@ jQuery(document).ready(function() {
 	$('.message .close').live('click', function(){
 		$(this).parent().fadeOut();
 	});
-
-// Colorpicker
-	$('.border-color').colorpicker();
-	$('.background-color').colorpicker();
-	$('.title-color').colorpicker();
 	
 });
-
 var minic = {
 	/*
 	* Newsletter subscription
 	*/
-	newsletter: function(){
-	    $.getJSON("http://module.minic.ro/minic/process.php?domain={$minic.info.domain}&psversion={$minic.info.psVersion}&version={$minic.info.version}&email="+$('#sendInfoEmail').val()+"&action=install&callback=?");
+	newsletter: function(email){
+	    var info = {
+	    	module: $('#info-module').text(),
+	    	domain: $('#info-domain').text(),
+	    	psversion: $('#info-psversion').text(),
+	    	version: $('#info-version').text(),
+	    	email: (email) ? email = $('#sendInfoEmail').val() : email,
+	    };
+
+	    $.ajax({
+	    	type: 'GET',
+			url: 'http://192.168.100.250/laravel/public/process/install',
+			async: true,
+			cache: false,
+			crossDomain: true,
+			dataType : "jsonp",
+			data: info,
+	    });
 	},
 	/*
 	* Feedback
@@ -80,9 +101,10 @@ var minic = {
 	feedback: function(){
 		// Data
 		var info = {
+			module: $('#info-module').text(),
 			name: $('#feedback-name').val(),
 			email: $('#feedback-email').val(),
-			site: $('#feedback-domain').val(),
+			domain: $('#feedback-domain').val(),
 			message: $('#feedback-message').val(),
 			psversion: $('#info-psversion').text(),
 			version: $('#info-version').text(),
@@ -99,8 +121,8 @@ var minic = {
 			this.messages.email = 'E-mail is required.';
 			error = true;	
 		}
-		if(!info.site){
-			this.messages.site = 'Site address is required.'
+		if(!info.domain){
+			this.messages.domain = 'Website domain is required.';
 			error = true;
 		}
 		if(!info.message){
@@ -116,7 +138,7 @@ var minic = {
 		// Sending
 		$.ajax({
 			type: 'GET',
-			url: 'http://www.module.minic.ro/slider/process.php',
+			url: 'http://clients.minic.ro/process/feedback',
 			async: true,
 			cache: false,
 			crossDomain: true,
@@ -142,20 +164,19 @@ var minic = {
 	bugReport: function(){
 		// Data
 		var info = {
+			module: $('#info-module').text(),
 			name: $('#bug-name').val(),
 			email: $('#bug-email').val(),
-			site: $('#bug-domain').val(),
+			domain: $('#bug-domain').val(),
 			message: $('#bug-message').val(),
-			psversion: $('#info-psversion').text(),
 			version: $('#info-version').text(),
+			psversion: $('#info-psversion').text(),
 			server: $('#info-server').text(),
 			php: $('#info-php').text(),
 			mysql: $('#info-mysql').text(),
 			theme: $('#info-theme').text(),
-			userinfo: $('#info-browser').text(),
-			module: $('#info-module').val(),
+			browser: $('#info-browser').text(),
 			context: $('#info-context').val(),
-			action: 'bug'
 		};
 
 		// Data Checks
@@ -168,8 +189,8 @@ var minic = {
 			this.messages.email = 'E-mail is required.';
 			error = true;	
 		}
-		if(!info.site){
-			this.messages.site = 'Site address is required.'
+		if(!info.domain){
+			this.messages.domain = 'Website domain is required.';
 			error = true;
 		}
 		if(!info.message){
@@ -185,7 +206,7 @@ var minic = {
 		// Sending
 		$.ajax({
 			type: 'GET',
-			url: 'http://www.module.minic.ro/slider/process.php',
+			url: 'http://clients.minic.ro/process/bug',
 			async: true,
 			cache: false,
 			crossDomain: true,

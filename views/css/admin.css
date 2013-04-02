@@ -7,6 +7,7 @@
 	}
 	#minic a,
 	#minic input,
+	#minic select,
 	#minic textarea,
 	#minic span,
 	#minic label{
@@ -14,6 +15,8 @@
 		-moz-transition: all 0.3s ease-in-out;
 		-o-transition: all 0.3s ease-in-out;
 		transition: all 0.3s ease-in-out;
+
+		-webkit-backface-visibility: hidden;
 	}
 	/* Labels */
 	#minic label{
@@ -34,6 +37,7 @@
 	}
 	#minic input[type="text"],
 	#minic input[type="number"],
+	#minic input[type="file"],
 	#minic select,
 	#minic textarea{
 		padding: 5px;
@@ -43,10 +47,15 @@
 		border-radius: 3px;
 	}
 	#minic input[type="text"]:hover,
+	#minic input[type="number"]:hover,
+	#minic input[type="file"]:hover,
+	#minic select:hover,
 	#minic textarea:hover{
 		border: 1px solid #a8a8a8;
 	}
 	#minic input:focus,
+	#minic input[type="file"]:focus,
+	#minic select:focus,
 	#minic textarea:focus{
 		-webkit-box-shadow:  0px 0px 5px 1px rgba(0, 0, 0, 0.22);
 	    box-shadow:  0px 0px 5px 1px rgba(0, 0, 0, 0.22);
@@ -84,7 +93,8 @@
 		display: inline-block;
 		width: 100%;
 	}
-	#menu-top a{
+	#menu-top a,
+	#menu-top #more-module{
 		float: right;
 		color: #525252;
 		font-size: 12px;
@@ -96,18 +106,93 @@
 		border: 0;
 		padding-right: 0;
 	}
+		/* More module */
+		#menu-top #more-module{
+			position: relative;
+		}
+			#menu-top #more-module span:hover{
+				cursor: pointer;
+			}
+			#menu-top ul#module-list{
+				display: none;
+				position: absolute;
+				right: 0;
+				top: 15px;
+				width: 400px;
+				padding: 10px;
+				background: #ebedf4;
+				border: 1px solid #d7dae1;
+				border-radius: 3px;
+			}
+			#menu-top #more-module:hover ul{
+				display: block;
+			}
+				#menu-top #minic-studio{
+					text-indent: -99999px;
+					width: 16px;
+					height: 16px;
+					background: url(../img/minic-logo.png) right center no-repeat;
+				}
+				#menu-top #open-bug{
+					border: 0;
+					margin-right: 50px;
+				}
+				/* Module list style */
+				#menu-top ul#module-list li a{
+					width: 378px;
+					padding: 5px 10px;
+					margin-bottom: 5px;
+					border: 1px solid transparent;
+				}
+				#menu-top ul#module-list li:hover a{
+					background-color: #e2e4eb;
+					border-color: #c5c8d1;
+				}
+				#menu-top ul#module-list img{
+					float: left;
+					margin-right: 10px;
+				}
+				#menu-top ul#module-list p{
+					float: left;
+					width: 336px;
+					margin: 0;
+				}
+				#menu-top ul#module-list p span{
+					display: block;
+					clear: both;
+					width: 100%;
+				}
+				#menu-top ul#module-list .title{
+					font-size: 14px;
+					color: #000;
+				}
+				#menu-top ul#module-list .description{
+					font-size: 12px;
+					font-weight: normal;
+				}
+				#menu-top ul#module-list .price{
+					font-weight: bold;
+					color: green;
+				}
 		/* Social */
 		#menu-top .social{
-			font-size: 15px;
+			font-size: 16px;
 		}
-			/* Facebook*/
+			/* Facebook */
 			#menu-top .icon-facebook{
 				color: #3b5998;
-				font-size: 15px;
 			}
-			/* Twitter*/
+			/* Twitter */
 			#menu-top .icon-twitter{
 				color: #019ad2;
+			}
+			/* Github */
+			#menu-top .icon-github{
+				color: #000;
+			}
+			/* Google */
+			#menu-top .icon-googleplus{
+				color: #dd4b39;
 			}
 	/* Banner */
 	/* Navigation */
@@ -141,9 +226,6 @@
 		background: #f8f8f8;
 		border: 1px solid #c5c8d1;
 		margin-bottom: 50px;
-	}
-	.minic-container.visible{
-		display: block;
 	}
 		/* minic top */
 		.minic-top{
@@ -205,8 +287,8 @@
 			.minic-content > div.input-holder label{
 				display: block;
 			}
-			.minic-content div.input-holder input[type="text"],
-			.minic-content div.input-holder textarea{
+			.minic-content > div.input-holder input[type="text"],
+			.minic-content > div.input-holder textarea{
 				clear: both;
 				width: 94%;
 				max-width: 400px;
@@ -225,6 +307,7 @@
 				float: left;
 				width: 50%;
 			}
+
 		/* minic bottom */
 		.minic-bottom{
 			display: inline-block;
