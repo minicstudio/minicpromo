@@ -34,6 +34,9 @@
    			bottom: -{$minic_promo.dimension.height + 2*($minic_promo.dimension.padding + $minic_promo.border.border_width)}px;
    			margin-left: -{($minic_promo.dimension.width + 2*($minic_promo.dimension.padding) +2*($minic_promo.border.border_width))/2}{$minic_promo.dimension.width_unit};
    		{/if}
+   		{if $minic_promo_image}
+   			background: url('{$module_dir}upload/asd.jpg') center center no-repeat;
+   		{/if}
 	}
 	/*.minicpromo.active{
 		{$minic_promo.position}: 0;*/
@@ -63,13 +66,26 @@
 
 	{literal}
  	jQuery(document).ready(function($) {
+		// $('.minicpromo').click(function() {
+		// 	$(this).toggleClass('active');
+		// 	if ($(this).hasClass('active')) {
+		// 		$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
+		// 	}else{
+		// 		$(this).transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
+		// 	};
+		// });
+
 		$('.minicpromo').click(function() {
-			$(this).toggleClass('active');
-			if ($(this).hasClass('active')) {
-				$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
-			}else{
-				$(this).transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
-			};
+			$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
+		});
+
+		$(document).mouseup(function (e){
+		    var container = $(".minicpromo");
+		    console.log(container.has(e.target).length === 0);
+		    if (container.has(e.target).length === 0)
+		    {
+		        container.transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
+		    }
 		});
 
 			
@@ -77,7 +93,7 @@
 	{/literal}
 	//]]>
 </script>
-<div class="minicpromo position-{$minic_promo.position}">
+<div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
 	<h2 class="promo-title"><a href="{$minic_promo.title.link}" title="{$minic_promo.title.promo_title}">{$minic_promo.title.promo_title}</a></h2>
 	<p>{$minic_promo.description}</p>
 	<div class="activator">

@@ -24,6 +24,8 @@
 			<a href="">{l s='Menu item' mod='minicpromo'}</a>
 		</div>
 	</div>
+	<!-- messages -->
+	{include file="{$minic.admin_tpl_path}messages.tpl" id='message' class=$promo.error.type text=$promo.error.message}
 	<!-- feedback -->
 	{include file="{$minic.admin_tpl_path}feedback.tpl"}
 	<!-- bug report -->

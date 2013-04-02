@@ -207,7 +207,8 @@ class MinicPromo extends Module
 
 		$this->context->smarty->assign('promo', array(
 			'settings' => unserialize(Configuration::get('MINIC-PROMOTION')),
-			'error' => $message
+			'error' => $message,
+			'image' => (file_exists(dirname(__FILE__).'/upload/asd.jpg')) ? true : false,
 		));
 
 		return $this->display(__FILE__, 'views/templates/admin/minicpromo.tpl');
@@ -350,6 +351,7 @@ class MinicPromo extends Module
 
 
 		$this->smarty->assign('minic_promo', $settings);
+		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/asd.jpg')) ? true : false);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');
 	}
