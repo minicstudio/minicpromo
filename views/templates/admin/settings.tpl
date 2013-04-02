@@ -1,12 +1,5 @@
-<div id="promo-settings" class="minic-container visible">{debug}
-    {if $promo.error}
-    <div class="error">
-        {foreach from=$promo.error item=error}            
-        <p>{$error.text}</p>
-        {/foreach}
-    </div>
-    {/if}
-	<form id="form-feed" class="" method="post" action="{$minic.post_action}">
+<div id="promo-settings" class="minic-container visible" style="display: block;">{debug}
+	<form id="form-feed" class="" method="post" action="{$minic.post_action}"  enctype="multipart/form-data">
         <div class="minic-top">
             <h3>{l s='Minicpromo Option' mod='minicpromo'}
                 <a href="http://module.minic.ro/minic-slider-news/using-the-feedback-and-bug-report/" target="_blank" class="help">{l s='help & tips' mod='minicpromo'}</a>
@@ -49,6 +42,10 @@
                 <div class="input-holder line-height">
                     <label>{l s='Title line height' mod='minicpromo'}:</label>
                     <input class="title-line-height" type="number" id="title-line-height" value="{$promo.settings.title.title_line_height}" name="title-line-height" step="any" />
+                </div>
+                <div class="input-holder upload">
+                    <label for="file">Filename:</label>
+                    <input type="file" name="file" id="file"><br>
                 </div>
             </div>
         </div>
@@ -118,6 +115,11 @@
                 <div class="input-holder duration">
                     <label>{l s='Animation easing' mod='minicpromo'}:</label>
                     <input class="easing" type="text" name="easing" value="{$promo.settings.animation.easing}" size="50" />
+                </div>
+                <div class="input-holder cubic-bezier-link">
+                    <label>Bouncing transitions with cubic-bezier: <a href="http://cubic-bezier.com" target="_blank" title="Cubic-Bezier">cubic-bezier.com</a></label>
+                    
+                    
                 </div>
             </div>
         </div>

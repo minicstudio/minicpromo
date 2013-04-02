@@ -43,7 +43,7 @@ class MinicPromo extends Module
 		parent::__construct();
 
 		$this->displayName = $this->l('Minic Promo');
-		$this->description = $this->l('A skeleton module for Minic Studio with feedback and other stuffs.');
+		$this->description = $this->l('An easy to use promotion modul for your shop.');
 
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
@@ -82,7 +82,7 @@ class MinicPromo extends Module
 			'activator_title' => 'Promotion',
 
 			'title' => array(
-				'promo_title' => 'The title of youre prromotion',
+				'promo_title' => 'The title of your promotion.',
 				'link' => 'http://minic.ro/en/',
 				'title_color' => '#ccc',
 				'title_size' => 24,
@@ -133,7 +133,9 @@ class MinicPromo extends Module
 	 */
 	public function uninstall()
 	{
-		if (!parent::uninstall())
+		if (!parent::uninstall() ||
+			!Configuration::deleteByName(strtoupper($this->$name).'_START') ||
+			!Configuration::deleteByName('MINIC-PROMOTION'))
 			return false;
 		return true;
 	}
@@ -143,8 +145,33 @@ class MinicPromo extends Module
 	 */	
 	public function getContent()
 	{
-		if(Tools::isSubmit('submitSettings'))
-			$error = $this->saveSettings();
+		$message = array(
+			'message' => false,
+			'type' => 'conf'
+			);
+
+		// Image upload
+		if(Tools::isSubmit('submitSettings')){
+			$message = $this->saveSettings();
+
+			if(!empty($_FILES['file']['name']) && $message['type'] == 'conf'){
+
+				// Check image size and format
+				if(!$message['message'] = ImageManager::validateUpload($_FILES['file'], 1048576)){
+					if(!ImageManager::resize($_FILES['file']['tmp_name'], dirname(__FILE__).'/upload/asd.jpg')){
+						$message = array(
+							'message' => $this->l('An error occured during the upload, please check the permissions.'),
+							'type' => 'error'
+						);
+					}
+				}else{
+					$message['type'] = 'error';
+				}
+			}
+
+						
+		}
+
 
 
 		// Smarty for admin
@@ -180,7 +207,7 @@ class MinicPromo extends Module
 
 		$this->context->smarty->assign('promo', array(
 			'settings' => unserialize(Configuration::get('MINIC-PROMOTION')),
-			'error' => $error
+			'error' => $message
 		));
 
 		return $this->display(__FILE__, 'views/templates/admin/minicpromo.tpl');
@@ -189,12 +216,13 @@ class MinicPromo extends Module
 	public function saveSettings()
 	{
 
-		$error = false;
+		$message = '';
 		if(!Validate::isUnsignedFloat(Tools::getValue('title-font-size')))
-			$error[] = $this->l('Add value between 16 - 40.');
+			$message .= $this->l('Add value between 16 - 40.'). '<br>';
 
 		if(!Validate::isUnsignedFloat(Tools::getValue('border-width')))
-			$error[] = $this->l('Ez nem jo szam');
+			$message .= $this->l('Ez nem jo szam'). '<br>';
+				
 
 		$promo_desc = array(
 			'description' => Tools::getValue('description'),
@@ -236,10 +264,18 @@ class MinicPromo extends Module
 			
 		);
 
-		if(!$error)
+		if(!$message){
 			Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc));
+			return array(
+				'message' => $this->l('Settings are saved!'),
+				'type' => 'conf'
+				);
+		}
 
-		return $error;
+		return array(
+			'message' => $message,
+			'type' => 'error'
+			);
 	}
 
 	// BACK OFFICE HOOKS
@@ -249,6 +285,10 @@ class MinicPromo extends Module
 	 */
 	public function hookDisplayBackOfficeHeader()
 	{
+		// Check if module is loaded
+		if (Tools::getValue('configure') != $this->name)
+			return false;
+		
 		// CSS
 		$this->context->controller->addCSS($this->_path.'views/css/elusive-icons/elusive-webfont.css');
 		$this->context->controller->addCSS($this->_path.'views/css/bootstrap.css');
@@ -258,7 +298,8 @@ class MinicPromo extends Module
 		$this->context->controller->addJquery();
 		$this->context->controller->addJS($this->_path.'views/js/bootstrap.js');
 		$this->context->controller->addJS($this->_path.'views/js/color-picker/bootstrap-colorpicker.js');
-		$this->context->controller->addJS($this->_path.'views/js/admin.js');	
+		$this->context->controller->addJS($this->_path.'views/js/admin.js');
+		$this->context->controller->addJS($this->_path.'views/js/'.$this->name.'.js');	
 	}
 
 	/**
@@ -281,7 +322,6 @@ class MinicPromo extends Module
 		$this->context->controller->addCSS($this->_path.'views/css/'.$this->name.'.css');
 		// JS
 		$this->context->controller->addJS($this->_path.'views/js/transit.js');
-		$this->context->controller->addJS($this->_path.'views/js/'.$this->name.'.js');
 	}
 
 	/**

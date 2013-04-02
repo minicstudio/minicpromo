@@ -3,7 +3,7 @@
             <name>minicpromo</name>
             <displayName><![CDATA[Minic Promo]]></displayName>
             <version><![CDATA[1.0]]></version>
-            <description><![CDATA[A skeleton module for Minic Studio with feedback and other stuffs.]]></description>
+            <description><![CDATA[An easy to use promotion modul for your shop.]]></description>
             <author><![CDATA[minic studio]]></author>
             <tab><![CDATA[front_office_features]]></tab>
 	<confirmUninstall>Are you sure you want to uninstall?</confirmUninstall>
