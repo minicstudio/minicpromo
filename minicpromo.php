@@ -344,14 +344,19 @@ class MinicPromo extends Module
 		// CSS
 		$this->context->controller->addCSS($this->_path.'views/css/elusive-icons/elusive-webfont.css');
 		$this->context->controller->addCSS($this->_path.'views/css/bootstrap.css');
+		$this->context->controller->addCSS($this->_path.'views/css/bootstrap-wysihtml5-0.0.2.css');
 		$this->context->controller->addCSS($this->_path.'views/css/color-picker/colorpicker.css');
 		$this->context->controller->addCSS($this->_path.'views/css/admin.css');
+
 		// JS
 		$this->context->controller->addJquery();
+		$this->context->controller->addJS($this->_path.'views/js/wysihtml5-0.3.0.js');
 		$this->context->controller->addJS($this->_path.'views/js/bootstrap.js');
 		$this->context->controller->addJS($this->_path.'views/js/color-picker/bootstrap-colorpicker.js');
+		$this->context->controller->addJS($this->_path.'views/js/bootstrap-wysihtml5-0.0.2.js');
 		$this->context->controller->addJS($this->_path.'views/js/admin.js');
 		$this->context->controller->addJS($this->_path.'views/js/'.$this->name.'.js');	
+		
 	}
 
 	/**
