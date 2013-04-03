@@ -11,21 +11,42 @@
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
                 <div class="input-holder">
                     <label>{l s='Activator Title' mod='minicpromo'}:</label>
-                    <input class="title" type="text" name="activator_title" value="{$promo.settings.activator_title}" size="50" />
+                    
+                    {foreach from=$promo.languages item=language}
+                        <div id="activator_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
+                            <input class="title" type="text" name="activator_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.activator}" size="50" />
+                        </div>
+                    {/foreach}
+                    {$promo.texts.flags.activator}
                 </div>
         		<div class="input-holder title">
         			<label>{l s='Title for Promotion' mod='minicpromo'}:</label>
-        			<input class="title" type="text" name="title" value="{$promo.settings.title.promo_title}" size="50" />
+                    {foreach from=$promo.languages item=language}
+                        <div id="title_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
+         		            <input class="title" type="text" name="title_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.title}" size="50" />
+                        </div>
+                    {/foreach}
+                    {$promo.texts.flags.title}
         		</div>
                 <div class="input-holder description">
                     <label>{l s='Promotion text' mod='minicpromo'}:</label>
-                    <textarea class="text" name="description" rows="10" value="{$promo.settings.description}" cols="49"></textarea>
+                    {foreach from=$promo.languages item=language}
+                        <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
+                            <textarea class="description" type="text" name="description_{$language.id_lang}" rows="10" cols="49">{$promo.texts.{$language.id_lang}.description}</textarea>
+                        </div>
+                    {/foreach}
+                    {$promo.texts.flags.description}
                 </div>
             </div>
             <div class="text-style inner">
                 <div class="input-holder link">
                     <label>{l s='Link for Promotion' mod='minicpromo'}:</label>
-                    <input class="link" type="text" name="link" value="{$promo.settings.title.link}" size="50" />
+                    {foreach from=$promo.languages item=language}
+                        <div id="link_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
+                            <input class="link" type="text" name="link_{$language.id_lang}" size="50" value="{$promo.texts.{$language.id_lang}.link}" />
+                        </div>
+                    {/foreach}
+                    {$promo.texts.flags.link}
                 </div>
                 <div class="input-holder color">
                     <label>{l s='Title color' mod='minicpromo'}:</label>

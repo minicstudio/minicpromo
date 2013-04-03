@@ -123,7 +123,7 @@ class MinicPromo extends Module
 			!$this->registerHook('displayBackOfficeHeader') || 
 			!$this->registerHook('displayAdminHomeQuickLinks') || 
 			!Configuration::updateValue(strtoupper($this->name).'_START', 1) || 
-			!Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc)))
+			!Configuration::updateValue('MINIC_PROMOTION', serialize($promo_desc)))
 			return false;
 		return true;
 	}
@@ -134,8 +134,9 @@ class MinicPromo extends Module
 	public function uninstall()
 	{
 		if (!parent::uninstall() ||
-			!Configuration::deleteByName(strtoupper($this->$name).'_START') ||
-			!Configuration::deleteByName('MINIC-PROMOTION'))
+			!Configuration::deleteByName(strtoupper($this->name).'_START') ||
+			!Configuration::deleteByName('MINIC_PROMOTION') ||
+			!Configuration::deleteByName('MINIC_PROMOTION_TEXTS'))
 			return false;
 		return true;
 	}
@@ -145,6 +146,7 @@ class MinicPromo extends Module
 	 */	
 	public function getContent()
 	{
+		$languages = Language::getLanguages(false);
 		$message = array(
 			'message' => false,
 			'type' => 'conf'
@@ -158,7 +160,7 @@ class MinicPromo extends Module
 
 				// Check image size and format
 				if(!$message['message'] = ImageManager::validateUpload($_FILES['file'], 1048576)){
-					if(!ImageManager::resize($_FILES['file']['tmp_name'], dirname(__FILE__).'/upload/asd.jpg')){
+					if(!ImageManager::resize($_FILES['file']['tmp_name'], dirname(__FILE__).'/upload/minicpromo_background.jpg')){
 						$message = array(
 							'message' => $this->l('An error occured during the upload, please check the permissions.'),
 							'type' => 'error'
@@ -205,10 +207,26 @@ class MinicPromo extends Module
 		if(Configuration::get(strtoupper($this->name).'_START') == 1)
 			Configuration::updateValue(strtoupper($this->name).'_START', 0);
 
+		$texts = array();
+
+		foreach ($languages as $key => $lang) {
+			$texts[$lang['id_lang']] = unserialize(Configuration::get('MINIC_PROMOTION_TEXTS', $lang['id_lang']));
+		}
+
+		$texts['flags']['activator'] = $this->displayFlags($languages, $this->context->language->id, 'activator¤title¤description¤link', 'activator', true);
+		$texts['flags']['title'] = $this->displayFlags($languages, $this->context->language->id, 'activator¤title¤description¤link', 'title', true);
+		$texts['flags']['description'] = $this->displayFlags($languages, $this->context->language->id, 'activator¤title¤description¤link', 'description', true);
+		$texts['flags']['link'] = $this->displayFlags($languages, $this->context->language->id, 'activator¤title¤description¤link', 'link', true);
+
+		// p($texts);
+
 		$this->context->smarty->assign('promo', array(
-			'settings' => unserialize(Configuration::get('MINIC-PROMOTION')),
+			'settings' => unserialize(Configuration::get('MINIC_PROMOTION')),
+			'texts' => $texts,
 			'error' => $message,
-			'image' => (file_exists(dirname(__FILE__).'/upload/asd.jpg')) ? true : false,
+			'image' => (file_exists(dirname(__FILE__).'/upload/minicpromo_background.jpg')) ? true : false,
+			'languages' => $languages,
+			'default_lang' => $this->context->language->id
 		));
 
 		return $this->display(__FILE__, 'views/templates/admin/minicpromo.tpl');
@@ -226,12 +244,8 @@ class MinicPromo extends Module
 				
 
 		$promo_desc = array(
-			'description' => Tools::getValue('description'),
-			'activator_title' => Tools::getValue('activator_title'),
 
 			'title' => array(
-				'promo_title' => Tools::getValue('title'),
-				'link' => Tools::getValue('link'),
 				'title_color' => Tools::getValue('title-color'),
 				'title_size' => Tools::getValue('title-font-size'),
 				'title_unit' => Tools::getValue('title-size-unit'),
@@ -266,7 +280,26 @@ class MinicPromo extends Module
 		);
 
 		if(!$message){
-			Configuration::updateValue('MINIC-PROMOTION', serialize($promo_desc));
+			Configuration::updateValue('MINIC_PROMOTION', serialize($promo_desc));
+			$texts = array();
+			$languages = Language::getLanguages(false);
+
+			foreach ($languages as $key => $lang) {
+				$activator = Tools::getValue('activator_'.$lang['id_lang']);
+				$title = Tools::getValue('title_'.$lang['id_lang']);
+				$description = Tools::getValue('description_'.$lang['id_lang']);
+				$link = Tools::getValue('link_'.$lang['id_lang']);
+				$texts[$lang['id_lang']] = serialize(array(
+					'activator' 	=> ($activator) ? $activator : Tools::getValue('activator_'.Configuration::get('PS_LANG_DEFAULT')),
+					'title' 		=> ($title) ? $title : Tools::getValue('title_'.Configuration::get('PS_LANG_DEFAULT')),
+					'description' 	=> ($description) ? $description : Tools::getValue('description_'.Configuration::get('PS_LANG_DEFAULT')),
+					'link' 			=> ($link) ? $link : Tools::getValue('link_'.Configuration::get('PS_LANG_DEFAULT'))
+				));
+			}
+
+
+			Configuration::updateValue('MINIC_PROMOTION_TEXTS', $texts);
+
 			return array(
 				'message' => $this->l('Settings are saved!'),
 				'type' => 'conf'
@@ -334,7 +367,8 @@ class MinicPromo extends Module
 		$axis = 'x';
 
 		// Get settings
-		$settings = unserialize(Configuration::get('MINIC-PROMOTION'));
+		$settings = unserialize(Configuration::get('MINIC_PROMOTION'));
+		$settings['texts'] = unserialize(Configuration::get('MINIC_PROMOTION_TEXTS', $params['cookie']->id_lang));
 
 		// Modify axis
 		if(($settings['position'] == 'top' || $settings['position'] == 'bottom'))
@@ -351,7 +385,7 @@ class MinicPromo extends Module
 
 
 		$this->smarty->assign('minic_promo', $settings);
-		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/asd.jpg')) ? true : false);
+		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/minicpromo_background.jpg')) ? true : false);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');
 	}

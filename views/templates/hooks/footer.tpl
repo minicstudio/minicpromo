@@ -4,9 +4,6 @@
 	.minicpromo {
 		width: {$minic_promo.dimension.width}{$minic_promo.dimension.width_unit};
 		height: {$minic_promo.dimension.height}{$minic_promo.dimension.height_unit};
-		{if $minic_promo.background}
-			background-color: {$minic_promo.background};
-		{/if}
 		{if $minic_promo.border.border_width && $minic_promo.border.border_style && $minic_promo.border.border_color}
 			border: {$minic_promo.border.border_width}px {$minic_promo.border.border_style} {$minic_promo.border.border_color};
 		{/if}
@@ -35,8 +32,11 @@
    			margin-left: -{($minic_promo.dimension.width + 2*($minic_promo.dimension.padding) +2*($minic_promo.border.border_width))/2}{$minic_promo.dimension.width_unit};
    		{/if}
    		{if $minic_promo_image}
-   			background: url('{$module_dir}upload/asd.jpg') center center no-repeat;
+   			background: url('{$module_dir}upload/minicpromo_background.jpg') center center no-repeat;
    		{/if}
+   		{if $minic_promo.background}
+			background-color: {$minic_promo.background};
+		{/if}
 	}
 	/*.minicpromo.active{
 		{$minic_promo.position}: 0;*/
@@ -54,6 +54,9 @@
 		{if $minic_promo.position == "top"}
 			top: {$minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + ($minic_promo.border.border_width)}px;
 		{/if}
+	}
+	.minicpromo.active .activator{
+		opacity: 0;
 	}
 </style>
 <script type="text/javascript">
@@ -76,15 +79,14 @@
 		// });
 
 		$('.minicpromo').click(function() {
-			$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
+			$(this).addClass('active').transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
 		});
 
 		$(document).mouseup(function (e){
 		    var container = $(".minicpromo");
-		    console.log(container.has(e.target).length === 0);
-		    if (container.has(e.target).length === 0)
+		    if (e.target.id != "minicpromo")
 		    {
-		        container.transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
+		        container.removeClass('active').transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
 		    }
 		});
 
@@ -97,7 +99,7 @@
 	<h2 class="promo-title"><a href="{$minic_promo.title.link}" title="{$minic_promo.title.promo_title}">{$minic_promo.title.promo_title}</a></h2>
 	<p>{$minic_promo.description}</p>
 	<div class="activator">
-		<h2>{$minic_promo.activator_title}</h2>
+		<h2>{$minic_promo.activator}</h2>
 	</div>
 </div>
 <!-- end minicpromo -->
