@@ -11,7 +11,6 @@
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
                 <div class="input-holder">
                     <label>{l s='Activator Title' mod='minicpromo'}:</label>
-                    
                     {foreach from=$promo.languages item=language}
                         <div id="activator_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
                             <input class="title" type="text" name="activator_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.activator}" size="50" />
@@ -28,17 +27,6 @@
                     {/foreach}
                     {$promo.texts.flags.title}
         		</div>
-                <div class="input-holder description">
-                    <label>{l s='Promotion text' mod='minicpromo'}:</label>
-                    {foreach from=$promo.languages item=language}
-                        <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
-                            <textarea class="description" type="text" name="description_{$language.id_lang}" rows="10" cols="49">{$promo.texts.{$language.id_lang}.description}</textarea>
-                        </div>
-                    {/foreach}
-                    {$promo.texts.flags.description}
-                </div>
-            </div>
-            <div class="text-style inner">
                 <div class="input-holder link">
                     <label>{l s='Link for Promotion' mod='minicpromo'}:</label>
                     {foreach from=$promo.languages item=language}
@@ -48,6 +36,17 @@
                     {/foreach}
                     {$promo.texts.flags.link}
                 </div>
+                <div class="input-holder description">
+                    <label>{l s='Promotion text' mod='minicpromo'}:</label>
+                    {foreach from=$promo.languages item=language}
+                        <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
+                            <textarea class="description" type="text" name="description_{$language.id_lang}" rows="10" cols="63">{$promo.texts.{$language.id_lang}.description}</textarea>
+                        </div>
+                    {/foreach}
+                    {$promo.texts.flags.description}
+                </div>
+            </div>
+            <div class="text-style inner">
                 <div class="input-holder color">
                     <label>{l s='Title color' mod='minicpromo'}:</label>
                     <input class="title-color" type="text" value="{$promo.settings.title.title_color}" id="title-color" name="title-color" />
@@ -63,6 +62,22 @@
                 <div class="input-holder line-height">
                     <label>{l s='Title line height' mod='minicpromo'}:</label>
                     <input class="title-line-height" type="number" id="title-line-height" value="{$promo.settings.title.title_line_height}" name="title-line-height" step="any" />
+                </div>
+                <div class="input-holder color">
+                    <label>{l s='Description color' mod='minicpromo'}:</label>
+                    <input class="description-color" type="text" value="{$promo.settings.description.color}" id="description-color" name="description-color" />
+                </div>
+                <div class="input-holder font-size">
+                    <label>{l s='Size of description' mod='minicpromo'}:</label>
+                    <input class="font-size" type="number" name="description-font-size" value="{$promo.settings.description.size}" size="50" step="any" />
+                    <select name="description-size-unit">
+                        <option value="px">px</option>
+                        <option value="em">em</option>
+                    </select>
+                </div>
+                <div class="input-holder line-height">
+                    <label>{l s='Description line height' mod='minicpromo'}:</label>
+                    <input class="description-line-height" type="number" id="description-line-height" value="{$promo.settings.description.line_height}" name="description-line-height" step="any" />
                 </div>
                 <div class="input-holder upload">
                     <label for="file">Filename:</label>
@@ -139,8 +154,36 @@
                 </div>
                 <div class="input-holder cubic-bezier-link">
                     <label>Bouncing transitions with cubic-bezier: <a href="http://cubic-bezier.com" target="_blank" title="Cubic-Bezier">cubic-bezier.com</a></label>
-                    
-                    
+                </div>
+            </div>
+            <div class="module-activator inner">
+                 <div class="input-holder background">
+                    <label>{l s='activator background color' mod='minicpromo'}:</label>
+                    <input type="text" class="background-color" value="{$promo.settings.dimension_activator.background}" id="background-color" name="activator-background-color">
+                </div>
+                <div class="input-holder width">
+                    <label>{l s='Minic Promotion modul activator width' mod='minicpromo'}:</label>
+                    <input class="width" type="number" name="activator-width" value="{$promo.settings.dimension_activator.width}" size="50" />
+                    <select name="activator-width-unit">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+                <div class="input-holder height">
+                    <label>{l s='Minic Promotion activator height' mod='minicpromo'}:</label>
+                    <input class="height" type="number" name="activator-height" value="{$promo.settings.dimension_activator.height}" size="50" />
+                    <select name="activator-height-unit">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+                <div class="input-holder padding">
+                    <label>{l s='Padding for activator' mod='minicpromo'}:</label>
+                    <input class="padding" type="number" name="activator-padding" value="{$promo.settings.dimension_activator.padding}" size="50" />
+                    <select name="activator-padding-unit">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
                 </div>
             </div>
         </div>

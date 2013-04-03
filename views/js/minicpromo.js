@@ -5,5 +5,6 @@ jQuery(document).ready(function($) {
 	$('.border-color').colorpicker();
 	$('.background-color').colorpicker();
 	$('.title-color').colorpicker();
+	$('.description-color').colorpicker();
 	
 });

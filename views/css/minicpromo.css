@@ -17,14 +17,7 @@
 	background: #ccc;
 }
 .minicpromo .activator h2{
-	/*display: block;
-    position: absolute;
-    right: -35px;
-    bottom: 35px;
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);*/
-    padding: 10px;
-
+	text-align: center;
 }
 .position-top{
 	top: 0;

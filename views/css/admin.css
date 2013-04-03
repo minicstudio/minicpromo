@@ -46,6 +46,9 @@
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
 	}
+	#minic input[type="number"]{
+		width: 100px;
+	}
 	#minic input[type="text"]:hover,
 	#minic input[type="number"]:hover,
 	#minic input[type="file"]:hover,

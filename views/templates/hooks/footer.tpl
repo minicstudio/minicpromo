@@ -38,15 +38,15 @@
 			background-color: {$minic_promo.background};
 		{/if}
 	}
-	/*.minicpromo.active{
-		{$minic_promo.position}: 0;*/
-	}
 	.minicpromo .promo-title a{
-		color: {$minic_promo.title.title_color};
 		font-size: {$minic_promo.title.title_size}{$minic_promo.title.title_unit};
 		line-height: {$minic_promo.title.title_line_height};
 	}
 	.minicpromo .activator{
+		background-color: {$minic_promo.dimension_activator.background};
+		width: {$minic_promo.dimension_activator.width}{$minic_promo.dimension_activator.width_unit};
+		height: {$minic_promo.dimension_activator.height}{$minic_promo.dimension_activator.height_unit};
+		padding: {$minic_promo.dimension_activator.padding}{$minic_promo.dimension_activator.padding_unit};
 		{$minic_promo.position}: {$minic_promo.dimension.width + 2*($minic_promo.dimension.padding) + ($minic_promo.border.border_width)}px;
 		{if $minic_promo.position == "bottom"}
 			bottom: {$minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + ($minic_promo.border.border_width)}px;
@@ -54,6 +54,20 @@
 		{if $minic_promo.position == "top"}
 			top: {$minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + ($minic_promo.border.border_width)}px;
 		{/if}
+		{if $minic_promo.position == "top" || $minic_promo.position == "bottom"}
+			left: {(($minic_promo.dimension.width + 2*($minic_promo.dimension.padding) + 2*($minic_promo.border.border_width))-($minic_promo.dimension_activator.width +2*$minic_promo.dimension_activator.padding))/2}px;
+		{/if}
+		{if $minic_promo.position == "left" || $minic_promo.position == "right"}
+			top: {(($minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + 2*($minic_promo.border.border_width))-($minic_promo.dimension_activator.height +2*$minic_promo.dimension_activator.padding))/2}px;
+		{/if}
+	}
+	.minicpromo .activator h2{
+		line-height: {$minic_promo.dimension_activator.height}px;
+	}
+	.minicpromo .description{
+		font-size: {$minic_promo.description.size}{$minic_promo.description.unit};
+		line-height: {$minic_promo.description.line_height};
+		color: {$minic_promo.description.color};
 	}
 	.minicpromo.active .activator{
 		opacity: 0;
@@ -96,10 +110,10 @@
 	//]]>
 </script>
 <div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
-	<h2 class="promo-title"><a href="{$minic_promo.title.link}" title="{$minic_promo.title.promo_title}">{$minic_promo.title.promo_title}</a></h2>
-	<p>{$minic_promo.description}</p>
+	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
+	<p class="description">{$minic_promo.texts.description}</p>
 	<div class="activator">
-		<h2>{$minic_promo.activator}</h2>
+		<h2>{$minic_promo.texts.activator}</h2>
 	</div>
 </div>
 <!-- end minicpromo -->

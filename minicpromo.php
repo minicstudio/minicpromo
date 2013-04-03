@@ -252,6 +252,13 @@ class MinicPromo extends Module
 				'title_line_height' => Tools::getValue('title-line-height')
 			),
 
+			'description' => array(
+				'size' => Tools::getValue('description-font-size'),
+				'color' => Tools::getValue('description-color'),
+				'unit' => Tools::getValue('description-size-unit'),
+				'line_height' => Tools::getValue('description-line-height')
+			),
+
 			'border' => array(
 				'border_width' => Tools::getValue('border-width'),
 				'border_style' => Tools::getValue('border-style'),
@@ -272,6 +279,17 @@ class MinicPromo extends Module
 				'padding' => Tools::getValue('padding'),
 				'padding_unit' => Tools::getValue('padding-unit')
 			),
+
+			'dimension_activator' => array(
+				'width' => Tools::getValue('activator-width'),
+				'width_unit' => Tools::getValue('activator-width-unit'),
+				'height' => Tools::getValue('activator-height'),
+				'height_unit' => Tools::getValue('activator-height-unit'),
+				'padding' => Tools::getValue('activator-padding'),
+				'padding_unit' => Tools::getValue('activator-padding-unit'),
+				'background' => Tools::getValue('activator-background-color')
+			),
+
 			'animation' => array(
 				'duration' => Tools::getValue('duration'),
 				'easing' => Tools::getValue('easing')
