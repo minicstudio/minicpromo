@@ -306,7 +306,7 @@ class MinicPromo extends Module
 				$activator = Tools::getValue('activator_'.$lang['id_lang']);
 				$title = Tools::getValue('title_'.$lang['id_lang']);
 				$description = Tools::getValue('description_'.$lang['id_lang']);
-				$descr = htmlentities($description);
+				$descr = htmlspecialchars($description);
 				$link = Tools::getValue('link_'.$lang['id_lang']);
 				$texts[$lang['id_lang']] = serialize(array(
 					'activator' 	=> ($activator) ? $activator : Tools::getValue('activator_'.Configuration::get('PS_LANG_DEFAULT')),
