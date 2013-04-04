@@ -111,7 +111,7 @@
 </script>
 <div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
 	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
-	<p class="description">{$minic_promo.texts.description}</p>
+	<p class="description">{$minic_promo.texts.description|unescape:"html"}</p>
 	<div class="activator">
 		<h2>{$minic_promo.texts.activator}</h2>
 	</div>

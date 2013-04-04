@@ -6,6 +6,8 @@ jQuery(document).ready(function($) {
 	$('.background-color').colorpicker();
 	$('.title-color').colorpicker();
 	$('.description-color').colorpicker();
-	$('#bootstrap-wysi-editor').wysihtml5();
-	
+	$('.description').each(function() {
+        $('#'+$(this).attr('id')).wysihtml5();
+    });
+
 });

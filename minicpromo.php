@@ -306,11 +306,12 @@ class MinicPromo extends Module
 				$activator = Tools::getValue('activator_'.$lang['id_lang']);
 				$title = Tools::getValue('title_'.$lang['id_lang']);
 				$description = Tools::getValue('description_'.$lang['id_lang']);
+				$descr = htmlentities($description);
 				$link = Tools::getValue('link_'.$lang['id_lang']);
 				$texts[$lang['id_lang']] = serialize(array(
 					'activator' 	=> ($activator) ? $activator : Tools::getValue('activator_'.Configuration::get('PS_LANG_DEFAULT')),
 					'title' 		=> ($title) ? $title : Tools::getValue('title_'.Configuration::get('PS_LANG_DEFAULT')),
-					'description' 	=> ($description) ? $description : Tools::getValue('description_'.Configuration::get('PS_LANG_DEFAULT')),
+					'description' 	=> ($descr) ? $descr : Tools::getValue('description_'.Configuration::get('PS_LANG_DEFAULT')),
 					'link' 			=> ($link) ? $link : Tools::getValue('link_'.Configuration::get('PS_LANG_DEFAULT'))
 				));
 			}
