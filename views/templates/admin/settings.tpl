@@ -97,7 +97,7 @@
                 </div>
                 <div class="input-holder background">
                     <label>{l s='Background color' mod='minicpromo'}:</label>
-                    <input type="text" class="background-color" value="{$promo.settings.background}" id="background-color" name="background-color">
+                    <input type="text" class="background-color" value="{$promo.settings.background}" id="background-color" name="background-color" data-color-format="rgba">
                 </div>
                 <div class="input-holder border">
                     <label>{l s='Border' mod='minicpromo'}:</label>
