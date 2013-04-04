@@ -291,15 +291,27 @@
 			.minic-content div.input-holder label{
 				display: block;
 			}
-			.minic-content div.input-holder input[type="text"],
-			.minic-content div.input-holder textarea{
+			.minic-content input[type="text"],
+			.minic-content textarea{
 				clear: both;
-				width: 90%;
-				max-width: 550px;
+				width: 100%;
+				max-width: 508px;
 			}
-			.border .border-color{
+			.minic-content .border .border-color{
 				clear: none;
 				width: auto !important;
+			}
+			.minic-content label i{
+/*				        transform: scale(1,1);
+				     -o-transform: scale(1,1);
+				    -ms-transform: scale(1,1);
+				   -moz-transform: scale(1,1);
+				-webkit-transform: scale(1,1);*/
+				margin-right: 15px;
+			}
+			.minic-content label i.right{
+				float: right;
+				margin: 0;
 			}
 			/* minic-content -> minic comment */
 			.minic-content .minic-comments{

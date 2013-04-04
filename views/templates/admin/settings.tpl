@@ -11,7 +11,7 @@
                     <div class="accordion-heading">
                       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
                         <div class="">
-                            <label>{l s='Activator Title' mod='minicpromo'}: {$promo.texts.flags.activator}</label>
+                            <label>{l s='Activator Title' mod='minicpromo'}: {$promo.texts.flags.activator} <i class="icon-plus-sign right"></i></label>
                             {foreach from=$promo.languages item=language}
                                 <div id="activator_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
                                     <input class="title" type="text" name="activator_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.activator}" size="50" />
@@ -159,7 +159,7 @@
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
                             <div class="container-option">
-                                <label>{l s='Container options' mod='minicpromo'}:</label>
+                                <label><i class="icon-cogs"></i>{l s='Container options' mod='minicpromo'}:</label>
                             </div>
                         </a>
                     </div>
@@ -230,7 +230,7 @@
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
                             <div class="global-option">
-                                <label>{l s='Global options' mod='minicpromo'}:</label>
+                                <label><i class="icon-cog"></i>{l s='Global options' mod='minicpromo'}:</label>
                             </div>
                         </a>
                     </div>
