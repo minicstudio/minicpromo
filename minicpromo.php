@@ -251,6 +251,11 @@ class MinicPromo extends Module
 				'title_unit' => Tools::getValue('title-size-unit'),
 				'title_line_height' => Tools::getValue('title-line-height')
 			),
+			'activator' => array(
+				'title_color' => Tools::getValue('activator-color'),
+				'title_size' => Tools::getValue('activator-font-size'),
+				'title_unit' => Tools::getValue('activator-size-unit'),
+			),
 
 			'description' => array(
 				'size' => Tools::getValue('description-font-size'),

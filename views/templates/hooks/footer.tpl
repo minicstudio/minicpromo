@@ -63,6 +63,8 @@
 	}
 	.minicpromo .activator h2{
 		line-height: {$minic_promo.dimension_activator.height}px;
+		font-size: {$minic_promo.activator.title_size}{$minic_promo.activator.title_unit};
+		color: {$minic_promo.activator.title_color}
 	}
 	.minicpromo .description{
 		font-size: {$minic_promo.description.size}{$minic_promo.description.unit};

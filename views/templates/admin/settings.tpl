@@ -6,6 +6,32 @@
             </h3>
         </div>
         <div class="minic-content activator-title">
+            <div class="accordion" id="accordion2">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Collapsible Group Item #1
+                  </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                  <div class="accordion-inner">
+                    Anim pariatur cliche...
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    Collapsible Group Item #2
+                  </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Anim pariatur cliche...
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="text-construct inner">
                 <!-- Response -->
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
@@ -18,8 +44,8 @@
                     {/foreach}
                 </div>
         		<div class="input-holder title">
-        			<label>{l s='Title for Promotion' mod='minicpromo'}:</label>
-                    {$promo.texts.flags.title}
+        			<label>{l s='Title for Promotion' mod='minicpromo'}: {$promo.texts.flags.title}</label>
+                    
                     {foreach from=$promo.languages item=language}
                         <div id="title_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
          		            <input class="title" type="text" name="title_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.title}" size="50" />
@@ -27,8 +53,8 @@
                     {/foreach}
         		</div>
                 <div class="input-holder link">
-                    <label>{l s='Link for Promotion' mod='minicpromo'}:</label>
-                    {$promo.texts.flags.link}
+                    <label>{l s='Link for Promotion' mod='minicpromo'}: {$promo.texts.flags.link}</label>
+                    
                     {foreach from=$promo.languages item=language}
                         <div id="link_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
                             <input class="link" type="text" name="link_{$language.id_lang}" size="50" value="{$promo.texts.{$language.id_lang}.link}" />
@@ -36,8 +62,8 @@
                     {/foreach}
                 </div>
                 <div class="input-holder description">
-                    <label>{l s='Promotion text' mod='minicpromo'}:</label>
-                    {$promo.texts.flags.description}
+                    <label>{l s='Promotion text' mod='minicpromo'}: {$promo.texts.flags.description}</label>
+                    
                     {foreach from=$promo.languages item=language}
                         <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
                             <textarea class="description" id="bootstrap-wysi-editor-{$language.id_lang}" type="text" name="description_{$language.id_lang}" rows="10" cols="63">{$promo.texts.{$language.id_lang}.description|unescape:"html"}</textarea>
@@ -61,6 +87,18 @@
                 <div class="input-holder line-height">
                     <label>{l s='Title line height' mod='minicpromo'}:</label>
                     <input class="title-line-height" type="number" id="title-line-height" value="{$promo.settings.title.title_line_height}" name="title-line-height" step="any" />
+                </div>
+                <div class="input-holder color">
+                    <label>{l s='Activator color' mod='minicpromo'}:</label>
+                    <input class="activator-color" type="text" value="{$promo.settings.activator.title_color}" id="activator-color" name="activator-color" />
+                </div>
+                <div class="input-holder font-size">
+                    <label>{l s='Size of activator' mod='minicpromo'}:</label>
+                    <input class="font-size" type="number" name="activator-font-size" value="{$promo.settings.activator.title_size}" size="50" step="any" />
+                    <select name="activator-size-unit">
+                        <option value="px">px</option>
+                        <option value="em">em</option>
+                    </select>
                 </div>
                 <div class="input-holder color">
                     <label>{l s='Description color' mod='minicpromo'}:</label>
@@ -108,7 +146,6 @@
                         <option value="dotted">dotted</option>
                         <option value="double">double</option>
                     </select>
-                    <label>{l s='Border color' mod='minicpromo'}:</label>
                     <input type="text" class="border-color" value="{$promo.settings.border.border_color}" id="border-color" name="border-color">
                     <label>{l s='Border radius' mod='minicpromo'}:</label>
                     <input class="title" type="number" name="border-radius" value="{$promo.settings.border.border_radius}" size="50" />

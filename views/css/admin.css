@@ -281,20 +281,25 @@
 			padding: 50px 3%;	
 		}
 			/* minic content -> input cotnainers */
-			.minic-content > div.input-holder{
+			.minic-content div.input-holder{
 				float: left;
 				clear: both;
-				width: 45%;
+				width: 70%;
 				margin: 0 5% 10px 0;
+
 			}
-			.minic-content > div.input-holder label{
+			.minic-content div.input-holder label{
 				display: block;
 			}
-			.minic-content > div.input-holder input[type="text"],
-			.minic-content > div.input-holder textarea{
+			.minic-content div.input-holder input[type="text"],
+			.minic-content div.input-holder textarea{
 				clear: both;
-				width: 94%;
-				max-width: 400px;
+				width: 90%;
+				max-width: 550px;
+			}
+			.border .border-color{
+				clear: none;
+				width: auto !important;
 			}
 			/* minic-content -> minic comment */
 			.minic-content .minic-comments{
@@ -310,6 +315,18 @@
 				float: left;
 				width: 50%;
 			}
+			.minic-content .displayed_flag{
+				margin-right: 10px;
+			}
+			.minic-content .language_flags{
+				position: absolute;
+				z-index: 99;
+			}
+			.inpu
+			.minic-content .text-construct input,
+			.minic-content .text-construct textarea{
+				width: 60%;
+			}
 
 		/* minic bottom */
 		.minic-bottom{
@@ -323,3 +340,4 @@
 			float: right;
 			margin-left: 10px;
 		}
+	
