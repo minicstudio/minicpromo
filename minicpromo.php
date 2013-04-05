@@ -271,6 +271,7 @@ class MinicPromo extends Module
 				'border_radius' => Tools::getValue('border-radius'),
 				'border_radius_unit' => Tools::getValue('border-radius-unit')
  			),
+ 			'open_link' => Tools::getValue('open-link'),
 
 			'position' => Tools::getValue('position'),
 

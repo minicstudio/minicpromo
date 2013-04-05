@@ -312,8 +312,8 @@
 			.minic-content .collapsed i.icon-plus-sign{
 				display: block;
 			}
-			.minic-content  i.icon-minus-sign{
-				display: none;
+			.minic-content .expanded i.icon-minus-sign{
+				display: block;
 			}
 
 			/* minic-content -> minic comment */

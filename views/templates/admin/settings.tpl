@@ -9,7 +9,7 @@
             <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
                         <div class="">
                             <label>{l s='Activator Title' mod='minicpromo'}: {$promo.texts.flags.activator} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             {foreach from=$promo.languages item=language}
@@ -67,9 +67,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
                         <div class="title">
-                            <label>{l s='Title for Promotion' mod='minicpromo'}: {$promo.texts.flags.title}</label>
+                            <label>{l s='Title for Promotion' mod='minicpromo'}: {$promo.texts.flags.title} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             
                             {foreach from=$promo.languages item=language}
                                 <div id="title_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -102,9 +102,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
                             <div class="link">
-                                <label>{l s='Link for Promotion' mod='minicpromo'}: {$promo.texts.flags.link}</label>
+                                <label>{l s='Link for Promotion' mod='minicpromo'}: {$promo.texts.flags.link} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="link_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -116,15 +116,19 @@
                     </div>
                     <div id="collapseSix" class="accordion-body collapse">
                         <div class="accordion-inner">
-                            Open in a new tab.
+                            <label>{l s='Link target attribute' mod='minicpromo'}:</label>
+                            <select name="open-link" id="">
+                                <option value="_blank">blank</option>
+                                <option value="_self">default</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
                             <div class="description">
-                                <label>{l s='Promotion text' mod='minicpromo'}: {$promo.texts.flags.description}</label>
+                                <label>{l s='Promotion text' mod='minicpromo'}: {$promo.texts.flags.description} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -157,9 +161,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
                             <div class="container-option">
-                                <label><i class="icon-cogs"></i>{l s='Container options' mod='minicpromo'}:</label>
+                                <label><i class="icon-cogs"></i>{l s='Container options' mod='minicpromo'}: <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             </div>
                         </a>
                     </div>
@@ -228,9 +232,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
                             <div class="global-option">
-                                <label><i class="icon-cog"></i>{l s='Global options' mod='minicpromo'}:</label>
+                                <label><i class="icon-cog"></i>{l s='Global options' mod='minicpromo'}: <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             </div>
                         </a>
                     </div>

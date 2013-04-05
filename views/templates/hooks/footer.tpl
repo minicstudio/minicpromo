@@ -60,6 +60,7 @@
 		{if $minic_promo.position == "left" || $minic_promo.position == "right"}
 			top: {(($minic_promo.dimension.height + 2*($minic_promo.dimension.padding) + 2*($minic_promo.border.border_width))-($minic_promo.dimension_activator.height +2*$minic_promo.dimension_activator.padding))/2}px;
 		{/if}
+		cursor: pointer;
 	}
 	.minicpromo .activator h2{
 		line-height: {$minic_promo.dimension_activator.height}px;
@@ -112,7 +113,7 @@
 	//]]>
 </script>
 <div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
-	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
+	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" target="{$minic_promo.open_link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
 	<p class="description">{$minic_promo.texts.description|unescape:"html"}</p>
 	<div class="activator">
 		<h2>{$minic_promo.texts.activator}</h2>

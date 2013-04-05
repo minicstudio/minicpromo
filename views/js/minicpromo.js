@@ -10,5 +10,7 @@ jQuery(document).ready(function($) {
 	$('.description').each(function() {
         $('#'+$(this).attr('id')).wysihtml5();
     });
-
+	$('.accordion-group').click(function() {
+		$(this).find('.accordion-toggle').toggleClass('expanded');
+	});
 });
