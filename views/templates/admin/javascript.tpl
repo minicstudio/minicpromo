@@ -13,9 +13,9 @@ jQuery(document).ready(function($) {
         var name = '{$minic.info.module}';
         
         // Banner
-        if(feed['modules'][name]['version'] != version){
+        if(typeof(feed['modules'][name]) != "undefined" && feed['modules'][name]['version'] != version){
             $('#banner').empty().html(feed['modules'][name]['update']);
-        }else if(feed['modules'][name]['news']){
+        }else if(typeof(feed['modules'][name]) != "undefined" && feed['modules'][name]['news']){
             $('#banner').empty().html(feed['modules'][name]['news']);
         }else{
             $('#banner').empty().html(feed['news']);

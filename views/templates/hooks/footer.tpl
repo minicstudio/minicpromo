@@ -1,5 +1,4 @@
 <!-- minicpromo -->
-{debug}
 <style type="text/css">
 	.minicpromo {
 		width: {$minic_promo.dimension.width}{$minic_promo.dimension.width_unit};

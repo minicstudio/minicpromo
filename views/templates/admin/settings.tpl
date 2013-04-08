@@ -1,4 +1,4 @@
-<div id="promo-settings" class="minic-container visible" style="display: block;">{debug}
+<div id="promo-settings" class="minic-container visible" style="display: block;">
 	<form id="form-feed" class="" method="post" action="{$minic.post_action}"  enctype="multipart/form-data">
         <div class="minic-top">
             <h3>{l s='Minicpromo Option' mod='minicpromo'}
@@ -11,7 +11,7 @@
                     <div class="accordion-heading">
                       <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
                         <div class="">
-                            <label>{l s='Activator Title' mod='minicpromo'}: {$promo.texts.flags.activator} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
+                            <label>{l s='Activator Title and options' mod='minicpromo'}: {$promo.texts.flags.activator} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             {foreach from=$promo.languages item=language}
                                 <div id="activator_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
                                     <input class="title" type="text" name="activator_{$language.id_lang}" value="{$promo.texts.{$language.id_lang}.activator}" size="50" />
@@ -69,7 +69,7 @@
                     <div class="accordion-heading">
                       <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
                         <div class="title">
-                            <label>{l s='Title for Promotion' mod='minicpromo'}: {$promo.texts.flags.title} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
+                            <label>{l s='Title for Promotion and options' mod='minicpromo'}: {$promo.texts.flags.title} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             
                             {foreach from=$promo.languages item=language}
                                 <div id="title_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -128,7 +128,7 @@
                     <div class="accordion-heading">
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
                             <div class="description">
-                                <label>{l s='Promotion text' mod='minicpromo'}: {$promo.texts.flags.description} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
+                                <label>{l s='Promotion text and options' mod='minicpromo'}: {$promo.texts.flags.description} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">

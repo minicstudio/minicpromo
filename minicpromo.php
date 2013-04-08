@@ -1,6 +1,6 @@
 <?php 
 /*
-* minicskeleton - a module template for Prestashop v1.5+
+* minicpromo - promotion modul for Prestashop v1.5+
 * Copyright (C) 2013 S.C. Minic Studio S.R.L.
 * 
 * This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ class MinicPromo extends Module
 		parent::__construct();
 
 		$this->displayName = $this->l('Minic Promo');
-		$this->description = $this->l('An easy to use promotion modul for your shop.');
+		$this->description = $this->l('An easy to use promotion module for your shop.');
 
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
@@ -78,16 +78,24 @@ class MinicPromo extends Module
 		*/
 
 		$promo_desc = array(
-			'description' => 'Your promotion description.',
-			'activator_title' => 'Promotion',
-
 			'title' => array(
-				'promo_title' => 'The title of your promotion.',
-				'link' => 'http://minic.ro/en/',
-				'title_color' => '#ccc',
+				'title_color' => '#276926',
 				'title_size' => 24,
 				'title_unit' => 'px',
 				'title_line_height' => 1
+			),
+
+			'activator' => array(
+				'title_color' => '#4a4949',
+				'title_size' => 16,
+				'title_unit' => 'px',
+			),
+
+			'description' => array(
+				'size' => 16,
+				'color' => '#ccc',
+				'unit' => 'px',
+				'line_height' => 1,
 			),
 
 			'border' => array(
@@ -97,6 +105,8 @@ class MinicPromo extends Module
 				'border_radius' => 4,
 				'border_radius_unit' => 'px'
  			),
+
+ 			'open_link' => '_blank',
 
 			'position' => 'left',
 
@@ -110,11 +120,28 @@ class MinicPromo extends Module
 				'padding' => 20,
 				'padding_unit' => 'px'
 			),
-			'animation' => array(
-				'duration' => 500,
-				'easing' => 'snap'
-			)
+
+			'dimension_activator' => array(
+				'width' => 160,
+				'width_unit' => 'px',
+				'height' => 20,
+				'height_unit' => 'px',
+				'padding' => 10,
+				'padding_unit' => 'px',
+				'background' => '#48ab1a',
+			),
+
+			'animation' 	=> array(
+				'duration' 	=> 500,
+				'easing' 	=> 'snap'
+			),
 			
+		);
+		$texts = array(
+			'activator' 	=> 'Promotion',
+			'title' 		=> 'Promotion title',
+			'description' 	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			'link' 			=> 'http://minic.ro/en',
 		);
 
 		if (!parent::install() || 
@@ -123,7 +150,8 @@ class MinicPromo extends Module
 			!$this->registerHook('displayBackOfficeHeader') || 
 			!$this->registerHook('displayAdminHomeQuickLinks') || 
 			!Configuration::updateValue(strtoupper($this->name).'_START', 1) || 
-			!Configuration::updateValue('MINIC_PROMOTION', serialize($promo_desc)))
+			!Configuration::updateValue('MINIC_PROMOTION', serialize($promo_desc)) ||
+			!Configuration::updateValue('MINIC_PROMOTION_TEXTS', serialize($texts)))
 			return false;
 		return true;
 	}

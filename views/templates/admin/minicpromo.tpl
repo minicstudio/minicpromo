@@ -18,11 +18,6 @@
             <a href="#feedback" id="open-feedback" class="minic-open">{l s='Feedback' mod='minicskeletonpro'}</a>
 		</div>
 		<div id="banner"></div>
-		<div id="navigation">
-			<a href="">{l s='Menu item' mod='minicpromo'}</a>
-			<a href="">{l s='Menu item' mod='minicpromo'}</a>
-			<a href="">{l s='Menu item' mod='minicpromo'}</a>
-		</div>
 	</div>
 	<!-- messages -->
 	{include file="{$minic.admin_tpl_path}messages.tpl" id='message' class=$promo.error.type text=$promo.error.message}
