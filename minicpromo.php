@@ -265,11 +265,24 @@ class MinicPromo extends Module
 
 		$message = '';
 		if(!Validate::isUnsignedFloat(Tools::getValue('title-font-size')))
-			$message .= $this->l('Add value between 16 - 40.'). '<br>';
+			$message .= $this->l('Optimum title font size are between 20 - 28 px.'). '<br>';
 
 		if(!Validate::isUnsignedFloat(Tools::getValue('border-width')))
-			$message .= $this->l('Ez nem jo szam'). '<br>';
-				
+			$message .= $this->l('Border width must be a positive number.'). '<br>';
+
+		if(!Validate::isUnsignedFloat(Tools::getValue('activator-font-size')))
+			$message .= $this->l('Use Activator font size between 18 -22 px.'). '<br>';	
+
+		if(!Validate::isUnsignedFloat(Tools::getValue('description-font-size')))
+			$message .= $this->l('Use description font size between 14 - 18 px.'). '<br>';
+
+		if(!Validate::isUnsignedFloat(Tools::getValue('description-line-height')))
+			$message .= $this->l('Use description line-height between 1 - 2.'). '<br>';
+
+		if(!Validate::isUnsignedFloat(Tools::getValue('border-radius')))
+			$message .= $this->l('Write a number in border radius-fileld.'). '<br>';
+
+
 
 		$promo_desc = array(
 
