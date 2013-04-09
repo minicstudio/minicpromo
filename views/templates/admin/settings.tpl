@@ -38,6 +38,10 @@
                                     <option value="%">%</option>
                                 </select>
                             </div>
+                            <div class="upload">
+                                <label for="activator-file">Filename:</label>
+                                <input type="file" name="activator-file" id="activator-file"><br>
+                            </div>
                             <div class="padding">
                                 <label>{l s='Padding for activator' mod='minicpromo'}:</label>
                                 <input class="padding" type="number" name="activator-padding" value="{$promo.settings.dimension_activator.padding}" size="50" />
@@ -59,8 +63,8 @@
                                 </select>
                             </div>
                             <div class="background">
-                                <label>{l s='activator background color' mod='minicpromo'}:</label>
-                                <input type="text" class="background-color" value="{$promo.settings.dimension_activator.background}" id="background-color" name="activator-background-color">
+                                <label>{l s='Activator background color' mod='minicpromo'}:</label>
+                                <input type="text" class="background-color" value="{$promo.settings.dimension_activator.background}" id="background-color" name="activator-background-color" data-color-format="rgba">
                             </div>
                         </div>
                     </div>
@@ -172,10 +176,10 @@
                             <div class="">
                                 <label>{l s='Position in the page' mod='minicpromo'}:</label>
                                 <select name="position">
-                                    <option value="top">top</option>
-                                    <option value="right">right</option>
-                                    <option value="bottom">bottom</option>
                                     <option value="left">left</option>
+                                    <option value="right">right</option>
+                                    <option value="top">top</option>
+                                    <option value="bottom">bottom</option>
                                 </select>
                             </div>
                             <div class="background">
@@ -249,7 +253,39 @@
                                 <input class="easing" type="text" name="easing" value="{$promo.settings.animation.easing}" size="50" />
                             </div>
                             <div class="cubic-bezier-link">
-                                <label>Bouncing transitions with cubic-bezier: <a href="http://cubic-bezier.com" target="_blank" title="Cubic-Bezier">cubic-bezier.com</a></label>
+                                <label>Supported easing types:</label>
+                                <ul id="easing">
+                                    <li>linear</li>
+                                    <li>ease</li>
+                                    <li>in</li>
+                                    <li>out</li>
+                                    <li>in-out</li>
+                                    <li>snap</li>
+                                    <li>easeOutCubic</li>
+                                    <li>easeInOutCubic</li>
+                                    <li>easeInCirc</li>
+                                    <li>easeOutCirc</li>
+                                    <li>easeInOutCirc</li>
+                                    <li>easeInExpo</li>
+                                    <li>easeOutExpo</li>
+                                    <li>easeInOutExpo</li>
+                                    <li>easeInQuad</li>
+                                    <li>easeOutQuad</li>
+                                    <li>easeInOutQuad</li>
+                                    <li>easeInQuart</li>
+                                    <li>easeOutQuart</li>
+                                    <li>easeInOutQuart</li>
+                                    <li>easeInQuint</li>
+                                    <li>easeOutQuint</li>
+                                    <li>easeInOutQuint</li>
+                                    <li>easeInSine</li>
+                                    <li>easeOutSine</li>
+                                    <li>easeInOutSine</li>
+                                    <li>easeInBack</li>
+                                    <li>easeOutBack</li>
+                                    <li>easeInOutBack</li>
+                                </ul>
+                                <label>Or use unique bouncing transitions with cubic-bezier: <a href="http://cubic-bezier.com" target="_blank" title="Cubic-Bezier">cubic-bezier.com</a></label>
                             </div>
                         </div>
                     </div>

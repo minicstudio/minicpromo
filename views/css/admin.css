@@ -126,6 +126,7 @@
 				background: #ebedf4;
 				border: 1px solid #d7dae1;
 				border-radius: 3px;
+				z-index: 9;
 			}
 			#menu-top #more-module:hover ul{
 				display: block;
@@ -284,7 +285,7 @@
 			.minic-content div.input-holder{
 				float: left;
 				clear: both;
-				width: 70%;
+				width: 50%;
 				margin: 0 5% 10px 0;
 
 			}
@@ -308,6 +309,14 @@
 				float: right;
 				margin: 0;
 				display: none;
+			}
+			.minic-content #easing{
+				width: 100%;
+				max-width: 520px;
+			}
+			.minic-content #easing li{
+				display: inline-block;
+				padding-right: 10px;
 			}
 			.minic-content .collapsed i.icon-plus-sign{
 				display: block;

@@ -42,6 +42,9 @@
 		line-height: {$minic_promo.title.title_line_height};
 	}
 	.minicpromo .activator{
+		{if $minic_promo_activatorimage}
+   			background: url('{$module_dir}upload/minicactivator_background.jpg') center center no-repeat;
+   		{/if}
 		background-color: {$minic_promo.dimension_activator.background};
 		width: {$minic_promo.dimension_activator.width}{$minic_promo.dimension_activator.width_unit};
 		height: {$minic_promo.dimension_activator.height}{$minic_promo.dimension_activator.height_unit};

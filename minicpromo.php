@@ -79,21 +79,21 @@ class MinicPromo extends Module
 
 		$promo_desc = array(
 			'title' => array(
-				'title_color' => '#276926',
+				'title_color' => '#1d1c1b',
 				'title_size' => 24,
 				'title_unit' => 'px',
 				'title_line_height' => 1
 			),
 
 			'activator' => array(
-				'title_color' => '#4a4949',
+				'title_color' => '#1d1c1b',
 				'title_size' => 16,
 				'title_unit' => 'px',
 			),
 
 			'description' => array(
 				'size' => 16,
-				'color' => '#ccc',
+				'color' => '#1d1c1b',
 				'unit' => 'px',
 				'line_height' => 1,
 			),
@@ -128,7 +128,7 @@ class MinicPromo extends Module
 				'height_unit' => 'px',
 				'padding' => 10,
 				'padding_unit' => 'px',
-				'background' => '#48ab1a',
+				'background' => '#fff',
 			),
 
 			'animation' 	=> array(
@@ -198,8 +198,20 @@ class MinicPromo extends Module
 					$message['type'] = 'error';
 				}
 			}
+			if(!empty($_FILES['activator-file']['name']) && $message['type'] == 'conf'){
 
-						
+				// Check image size and format
+				if(!$message['message'] = ImageManager::validateUpload($_FILES['activator-file'], 1048576)){
+					if(!ImageManager::resize($_FILES['activator-file']['tmp_name'], dirname(__FILE__).'/upload/minicactivator_background.jpg')){
+						$message = array(
+							'message' => $this->l('An error occured during the upload, please check the permissions.'),
+							'type' => 'error'
+						);
+					}
+				}else{
+					$message['type'] = 'error';
+				}
+			}				
 		}
 
 
@@ -215,6 +227,7 @@ class MinicPromo extends Module
 			'hooks_tpl_path' => $this->hooks_tpl_path,
 
 			'info' => array(
+				'module'	=> $this->name,
             	'name'      => Configuration::get('PS_SHOP_NAME'),
         		'domain'    => Configuration::get('PS_SHOP_DOMAIN'),
         		'email'     => Configuration::get('PS_SHOP_EMAIL'),
@@ -457,6 +470,7 @@ class MinicPromo extends Module
 
 		$this->smarty->assign('minic_promo', $settings);
 		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/minicpromo_background.jpg')) ? true : false);
+		$this->smarty->assign('minic_promo_activatorimage', (file_exists(dirname(__FILE__).'/upload/minicactivator_background.jpg')) ? true : false);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');
 	}
