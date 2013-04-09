@@ -1,4 +1,4 @@
 minicpromo
 ================
 
-An easy to use promotion module for Prestashop 1.5+
+This is a free promotion module for Prestashop v1.5+, good for temporary and special promotions. 
