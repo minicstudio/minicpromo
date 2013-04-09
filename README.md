@@ -1,4 +1,4 @@
 minicpromo
 ================
 
-Module skeleton for free minic modules
+An easy to use promotion module for Prestashop 1.5+
