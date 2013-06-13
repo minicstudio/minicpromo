@@ -133,7 +133,7 @@ class MinicPromo extends Module
 
 			'animation' 	=> array(
 				'duration' 	=> 500,
-				'easing' 	=> 'snap'
+				'easing' 	=> 'Linear.easeNone'
 			),
 			
 		);
@@ -188,7 +188,7 @@ class MinicPromo extends Module
 
 				// Check image size and format
 				if(!$message['message'] = ImageManager::validateUpload($_FILES['file'], 1048576)){
-					if(!ImageManager::resize($_FILES['file']['tmp_name'], dirname(__FILE__).'/upload/minicpromo_background.jpg')){
+					if(!ImageManager::resize($_FILES['file']['tmp_name'], dirname(__FILE__).'/upload/minicpromo_background.png', null, null, 'png')){
 						$message = array(
 							'message' => $this->l('An error occured during the upload, please check the permissions.'),
 							'type' => 'error'
@@ -265,7 +265,7 @@ class MinicPromo extends Module
 			'settings' => unserialize(Configuration::get('MINIC_PROMOTION')),
 			'texts' => $texts,
 			'error' => ($message['message']) ? $message : false,
-			'image' => (file_exists(dirname(__FILE__).'/upload/minicpromo_background.jpg')) ? true : false,
+			'image' => (file_exists(dirname(__FILE__).'/upload/minicpromo_background.png')) ? true : false,
 			'languages' => $languages,
 			'default_lang' => $this->context->language->id
 		));
@@ -439,6 +439,7 @@ class MinicPromo extends Module
 		// CSS
 		$this->context->controller->addCSS($this->_path.'views/css/'.$this->name.'.css');
 		// JS
+		$this->context->controller->addJS('http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js');
 		$this->context->controller->addJS($this->_path.'views/js/transit.js');
 	}
 
@@ -469,7 +470,7 @@ class MinicPromo extends Module
 
 
 		$this->smarty->assign('minic_promo', $settings);
-		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/minicpromo_background.jpg')) ? true : false);
+		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/minicpromo_background.png')) ? true : false);
 		$this->smarty->assign('minic_promo_activatorimage', (file_exists(dirname(__FILE__).'/upload/minicactivator_background.jpg')) ? true : false);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');

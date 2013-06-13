@@ -31,7 +31,7 @@
    			margin-left: -{($minic_promo.dimension.width + 2*($minic_promo.dimension.padding) +2*($minic_promo.border.border_width))/2}{$minic_promo.dimension.width_unit};
    		{/if}
    		{if $minic_promo_image}
-   			background: url('{$module_dir}upload/minicpromo_background.jpg') center center no-repeat;
+   			background: url('{$module_dir}upload/minicpromo_background.png') center center no-repeat;
    		{/if}
    		{if $minic_promo.background}
 			background-color: {$minic_promo.background};
@@ -84,30 +84,36 @@
 	var duration = {$minic_promo.animation.duration};
 	var animEasing = '{$minic_promo.animation.easing}';
 	
-	
+	var minicPromo = $('#minicpromo');
+
+
 
 	{literal}
  	jQuery(document).ready(function($) {
+
+ 		$('.minicpromo').click(function() {
+ 			$('this').addClass('active');
+ 			TweenLite.to("#minicpromo", duration, {{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}, ease: animEasing});
+ 		});
+
+ 		$(document).mouseup(function(e) {
+ 			if(e.target != minicPromo){
+ 				minicPromo.removeClass('active');
+ 				TweenLite.to('#minicpromo', duration, {{/literal}{$minic_promo.animation.axis}: 0{literal}, ease: animEasing});
+ 			}
+ 		});
+
 		// $('.minicpromo').click(function() {
-		// 	$(this).toggleClass('active');
-		// 	if ($(this).hasClass('active')) {
-		// 		$(this).transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
-		// 	}else{
-		// 		$(this).transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
-		// 	};
+		// 	$(this).addClass('active').transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
 		// });
 
-		$('.minicpromo').click(function() {
-			$(this).addClass('active').transition({{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}},duration, animEasing);
-		});
-
-		$(document).mouseup(function (e){
-		    var container = $(".minicpromo");
-		    if (e.target.id != "minicpromo")
-		    {
-		        container.removeClass('active').transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
-		    }
-		});
+		// $(document).mouseup(function (e){
+		//     var container = $(".minicpromo");
+		//     if (e.target.id != "minicpromo")
+		//     {
+		//         container.removeClass('active').transition({{/literal}{$minic_promo.animation.axis}: 0{literal}},duration, animEasing);
+		//     }
+		// });
 
 			
 	});

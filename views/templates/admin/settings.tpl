@@ -248,44 +248,59 @@
                                 <label>{l s='Animation duration' mod='minicpromo'}:</label>
                                 <input class="duration" type="text" name="duration" value="{$promo.settings.animation.duration}" size="50" />
                             </div>
-                            <div class="duration">
-                                <label>{l s='Animation easing' mod='minicpromo'}:</label>
-                                <input class="easing" type="text" name="easing" value="{$promo.settings.animation.easing}" size="50" />
-                            </div>
                             <div class="cubic-bezier-link">
-                                <label>Supported easing types:</label>
-                                <ul id="easing">
-                                    <li>linear</li>
-                                    <li>ease</li>
-                                    <li>in</li>
-                                    <li>out</li>
-                                    <li>in-out</li>
-                                    <li>snap</li>
-                                    <li>easeOutCubic</li>
-                                    <li>easeInOutCubic</li>
-                                    <li>easeInCirc</li>
-                                    <li>easeOutCirc</li>
-                                    <li>easeInOutCirc</li>
-                                    <li>easeInExpo</li>
-                                    <li>easeOutExpo</li>
-                                    <li>easeInOutExpo</li>
-                                    <li>easeInQuad</li>
-                                    <li>easeOutQuad</li>
-                                    <li>easeInOutQuad</li>
-                                    <li>easeInQuart</li>
-                                    <li>easeOutQuart</li>
-                                    <li>easeInOutQuart</li>
-                                    <li>easeInQuint</li>
-                                    <li>easeOutQuint</li>
-                                    <li>easeInOutQuint</li>
-                                    <li>easeInSine</li>
-                                    <li>easeOutSine</li>
-                                    <li>easeInOutSine</li>
-                                    <li>easeInBack</li>
-                                    <li>easeOutBack</li>
-                                    <li>easeInOutBack</li>
-                                </ul>
-                                <label>Or use unique bouncing transitions with cubic-bezier: <a href="http://cubic-bezier.com" target="_blank" title="Cubic-Bezier">cubic-bezier.com</a></label>
+                                <select class="easing" type="text" name="easing" >
+                                    <option value="Linear.easeNone">Linear.easeNone</option>
+                                    <option value="Power0.easeIn">Power0.easeIn  (linear)</option>
+                                    <option value="Power0.easeInOut">Power0.easeInOut  (linear)</option>
+                                    <option value="Power0.easeOut">Power0.easeOut  (linear)</option>
+                                    <option value="Power1.easeIn">Power1.easeIn</option>
+                                    <option value="Power1.easeInOut">Power1.easeInOut</option>
+                                    <option value="Power1.easeOut" selected="selected">Power1.easeOut</option>
+                                    <option value="Power2.easeIn">Power2.easeIn</option>
+                                    <option value="Power2.easeInOut">Power2.easeInOut</option>
+                                    <option value="Power2.easeOut">Power2.easeOut</option>
+                                    <option value="Power3.easeIn">Power3.easeIn</option>
+                                    <option value="Power3.easeInOut">Power3.easeInOut</option>
+                                    <option value="Power3.easeOut">Power3.easeOut</option>
+                                    <option value="Power4.easeIn">Power4.easeIn</option>
+                                    <option value="Power4.easeInOut">Power4.easeInOut</option>
+                                    <option value="Power4.easeOut">Power4.easeOut</option>
+                                    <option value="Quad.easeIn">Quad.easeIn  (same as Power1.easeIn)</option>
+                                    <option value="Quad.easeInOut">Quad.easeInOut  (same as Power1.easeInOut)</option>
+                                    <option value="Quad.easeOut">Quad.easeOut  (same as Power1.easeOut)</option>
+                                    <option value="Cubic.easeIn">Cubic.easeIn  (same as Power2.easeIn)</option>
+                                    <option value="Cubic.easeInOut">Cubic.easeInOut  (same as Power2.easeInOut)</option>
+                                    <option value="Cubic.easeOut">Cubic.easeOut  (same as Power2.easeOut)</option>
+                                    <option value="Quart.easeIn">Quart.easeIn  (same as Power3.easeIn)</option>
+                                    <option value="Quart.easeInOut">Quart.easeInOut  (same as Power3.easeInOut)</option>
+                                    <option value="Quart.easeOut">Quart.easeOut  (same as Power3.easeOut)</option>
+                                    <option value="Quint.easeIn">Quint.easeIn  (same as Power4.easeIn)</option>
+                                    <option value="Quint.easeInOut">Quint.easeInOut  (same as Power4.easeInOut)</option>
+                                    <option value="Quint.easeOut">Quint.easeOut  (same as Power4.easeOut)</option>
+                                    <option value="Strong.easeIn">Strong.easeIn  (same as Power4.easeIn)</option>
+                                    <option value="Strong.easeInOut">Strong.easeInOut  (same as Power4.easeInOut)</option>
+                                    <option value="Strong.easeOut">Strong.easeOut  (same as Power4.easeOut)</option>
+                                    <option value="Back.easeIn">Back.easeIn</option>
+                                    <option value="Back.easeInOut">Back.easeInOut</option>
+                                    <option value="Back.easeOut">Back.easeOut</option>
+                                    <option value="Bounce.easeIn">Bounce.easeIn</option>
+                                    <option value="Bounce.easeInOut">Bounce.easeInOut</option>
+                                    <option value="Bounce.easeOut">Bounce.easeOut</option>
+                                    <option value="Circ.easeIn">Circ.easeIn</option>
+                                    <option value="Circ.easeInOut">Circ.easeInOut</option>
+                                    <option value="Circ.easeOut">Circ.easeOut</option>
+                                    <option value="Elastic.easeIn">Elastic.easeIn</option>
+                                    <option value="Elastic.easeInOut">Elastic.easeInOut</option>
+                                    <option value="Elastic.easeOut">Elastic.easeOut</option>
+                                    <option value="Expo.easeIn">Expo.easeIn</option>
+                                    <option value="Expo.easeInOut">Expo.easeInOut</option>
+                                    <option value="Expo.easeOut">Expo.easeOut</option>
+                                    <option value="Sine.easeIn">Sine.easeIn</option>
+                                    <option value="Sine.easeInOut">Sine.easeInOut</option>
+                                    <option value="Sine.easeOut">Sine.easeOut</option>
+                                    <option value="SlowMo.ease">SlowMo.ease</option>
+                                </select>
                             </div>
                         </div>
                     </div>
