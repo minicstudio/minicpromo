@@ -99,7 +99,7 @@ class MinicPromo extends Module
 			),
 
 			'border' => array(
-				'border_width' => '1px',
+				'border_width' => '1',
 				'border_style' => 'solid',
 				'border_color' => '#cecece',
 				'border_radius' => 4,
