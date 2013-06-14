@@ -364,4 +364,13 @@
 			float: right;
 			margin-left: 10px;
 		}
+		/* --- Accordion Heading --- */
+
+		.accordion-toggle.expanded{
+			background: #ccc;
+			-webkit-transition: background 600s ease-in-out;
+			-moz-transition: background 600s ease-in-out;
+			-o-transition: background 600s ease-in-out;
+			transition: background 600s ease-in-out;
+		}
 	

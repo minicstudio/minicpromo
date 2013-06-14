@@ -122,11 +122,11 @@ class MinicPromo extends Module
 			),
 
 			'dimension_activator' => array(
-				'width' => 160,
+				'width' => 40,
 				'width_unit' => 'px',
-				'height' => 20,
+				'height' => 250,
 				'height_unit' => 'px',
-				'padding' => 10,
+				'padding' => 0,
 				'padding_unit' => 'px',
 				'background' => '#fff',
 			),
