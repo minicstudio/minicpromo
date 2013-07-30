@@ -133,7 +133,7 @@ class MinicPromo extends Module
 
 			'animation' 	=> array(
 				'duration' 	=> 0.5,
-				'easing' 	=> 'Linear.easeNone'
+				'easing' 	=> 'Power2.easeInOut'
 			),
 			
 		);
