@@ -137,12 +137,19 @@ class MinicPromo extends Module
 			),
 			
 		);
-		$texts = array(
-			'activator' 	=> 'Promotion',
-			'title' 		=> 'Promotion title',
-			'description' 	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-			'link' 			=> 'http://minic.ro/en',
-		);
+
+		$texts = array();
+		$languages = Language::getLanguages(false);
+
+		foreach ($languages as $key => $lang) {
+			$texts[$lang['id_lang']] = serialize(array(
+				'activator' 	=> 'Promotion',
+				'title' 		=> 'Promotion title',
+				'description' 	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'link' 			=> 'http://minic.ro/en',
+			));	
+		}
+		
 
 		if (!parent::install() || 
 			!$this->registerHook('displayFooter') || 
@@ -151,7 +158,7 @@ class MinicPromo extends Module
 			!$this->registerHook('displayAdminHomeQuickLinks') || 
 			!Configuration::updateValue(strtoupper($this->name).'_START', 1) || 
 			!Configuration::updateValue('MINIC_PROMOTION', serialize($promo_desc)) ||
-			!Configuration::updateValue('MINIC_PROMOTION_TEXTS', serialize($texts)))
+			!Configuration::updateValue('MINIC_PROMOTION_TEXTS', $texts))
 			return false;
 		return true;
 	}
