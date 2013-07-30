@@ -9,6 +9,7 @@ jQuery(document).ready(function($) {
         $('#'+$(this).attr('id')).wysihtml5();
     });
 	$('.accordion-group').click(function() {
-		$(this).find('.accordion-toggle').toggleClass('expanded');
+		$('.accordion-toggle.expanded').removeClass('expanded');
+		$(this).find('.accordion-toggle').addClass('expanded');
 	});
 });
