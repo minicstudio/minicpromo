@@ -9,7 +9,7 @@
             <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" title="{l s='Click to modify the activator settings' mod='minicpromo'}">
                         <div class="">
                             <label>{l s='Activator Title and options' mod='minicpromo'}: {$promo.texts.flags.activator} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             {foreach from=$promo.languages item=language}
@@ -23,7 +23,7 @@
                     <div id="collapseOne" class="accordion-body collapse">
                         <div class="accordion-inner">
                             <div class="width">
-                                <label>{l s='Minic Promotion modul activator width' mod='minicpromo'}:</label>
+                                <label>{l s='Activator width' mod='minicpromo'}:</label>
                                 <input class="width" type="number" name="activator-width" value="{$promo.settings.dimension_activator.width}" size="50" />
                                 <select name="activator-width-unit">
                                     <option value="px">px</option>
@@ -31,7 +31,7 @@
                                 </select>
                             </div>
                             <div class="height">
-                                <label>{l s='Minic Promotion activator height' mod='minicpromo'}:</label>
+                                <label>{l s='Activator height' mod='minicpromo'}:</label>
                                 <input class="height" type="number" name="activator-height" value="{$promo.settings.dimension_activator.height}" size="50" />
                                 <select name="activator-height-unit">
                                     <option value="px">px</option>
@@ -39,7 +39,7 @@
                                 </select>
                             </div>
                             <div class="upload">
-                                <label for="activator-file">Filename:</label>
+                                <label for="activator-file">Activator background image:</label>
                                 <input type="file" name="activator-file" id="activator-file"><br>
                             </div>
                             <div class="padding">
@@ -55,7 +55,7 @@
                                 <input class="activator-color" type="text" value="{$promo.settings.activator.title_color}" id="activator-color" name="activator-color" />
                             </div>
                             <div class="font-size">
-                                <label>{l s='Size of activator' mod='minicpromo'}:</label>
+                                <label>{l s='Activator font size' mod='minicpromo'}:</label>
                                 <input class="font-size" type="number" name="activator-font-size" value="{$promo.settings.activator.title_size}" size="50" step="any" />
                                 <select name="activator-size-unit">
                                     <option value="px">px</option>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" title="{l s='Click to edit the promotion title options' mod='minicpromo'}">
                         <div class="title">
                             <label>{l s='Title for Promotion and options' mod='minicpromo'}: {$promo.texts.flags.title} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             
@@ -90,7 +90,7 @@
                             <input class="title-color" type="text" value="{$promo.settings.title.title_color}" id="title-color" name="title-color" />
                         </div>
                         <div class="font-size">
-                            <label>{l s='Size of title' mod='minicpromo'}:</label>
+                            <label>{l s='Title font size' mod='minicpromo'}:</label>
                             <input class="font-size" type="number" name="title-font-size" value="{$promo.settings.title.title_size}" size="50" step="any" />
                             <select name="title-size-unit">
                                 <option value="px">px</option>
@@ -106,9 +106,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix" title="{l s='Click to change the link behavior' mod='minicpromo'}">
                             <div class="link">
-                                <label>{l s='Link for Promotion' mod='minicpromo'}: {$promo.texts.flags.link} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
+                                <label>{l s='Promotion link' mod='minicpromo'}: {$promo.texts.flags.link} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="link_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -130,9 +130,9 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree" title="{l s='Click to edit the promotion description' mod='minicpromo'}">
                             <div class="description">
-                                <label>{l s='Promotion text and options' mod='minicpromo'}: {$promo.texts.flags.description} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
+                                <label>{l s='Promotion description and options' mod='minicpromo'}: {$promo.texts.flags.description} <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
@@ -149,7 +149,7 @@
                                 <input class="description-color" type="text" value="{$promo.settings.description.color}" id="description-color" name="description-color" />
                             </div>
                             <div class="font-size">
-                                <label>{l s='Size of description' mod='minicpromo'}:</label>
+                                <label>{l s='Description font size' mod='minicpromo'}:</label>
                                 <input class="font-size" type="number" name="description-font-size" value="{$promo.settings.description.size}" size="50" step="any" />
                                 <select name="description-size-unit">
                                     <option value="px">px</option>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" title="{l s='Click for the container options' mod='minicpromo'}">
                             <div class="container-option">
                                 <label><i class="icon-cogs"></i>{l s='Container options' mod='minicpromo'}: <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             </div>
@@ -174,7 +174,7 @@
                     <div id="collapseFour" class="accordion-body collapse">
                         <div class="accordion-inner">
                             <div class="">
-                                <label>{l s='Position in the page' mod='minicpromo'}:</label>
+                                <label>{l s='Position on the page' mod='minicpromo'}:</label>
                                 <select name="position">
                                     <option value="left">left</option>
                                     <option value="right">right</option>
@@ -187,11 +187,11 @@
                                 <input type="text" class="background-color" value="{$promo.settings.background}" id="background-color" name="background-color" data-color-format="rgba">
                             </div>
                             <div class="upload">
-                                <label for="file">Filename:</label>
+                                <label for="file">Background image:</label>
                                 <input type="file" name="file" id="file"><br>
                             </div>
                             <div class="border">
-                                <label>{l s='Border' mod='minicpromo'}:</label>
+                                <label>{l s='Border (size, style, color)' mod='minicpromo'}:</label>
                                 <input class="title" type="number" name="border-width" value="{$promo.settings.border.border_width}" size="50" />
                                 <select name="border-style">
                                     <option value="solid">solid</option>
@@ -208,7 +208,7 @@
                                 </select>
                             </div>
                             <div class="width">
-                                <label>{l s='Minic Promotion modul width' mod='minicpromo'}:</label>
+                                <label>{l s='Container width' mod='minicpromo'}:</label>
                                 <input class="title" type="number" name="width" value="{$promo.settings.dimension.width}" size="50" />
                                 <select name="width-unit">
                                     <option value="px">px</option>
@@ -216,7 +216,7 @@
                                 </select>
                             </div>
                             <div class="height">
-                                <label>{l s='Minic Promotion modul height' mod='minicpromo'}:</label>
+                                <label>{l s='Container height' mod='minicpromo'}:</label>
                                 <input class="title" type="number" name="height" value="{$promo.settings.dimension.height}" size="50" />
                                 <select name="height-unit">
                                     <option value="px">px</option>
@@ -236,7 +236,7 @@
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive" title="{l s='Click for the animation options' mod='minicpromo'}">
                             <div class="global-option">
                                 <label><i class="icon-cog"></i>{l s='Global options' mod='minicpromo'}: <i class="icon-plus-sign right"></i><i class="icon-minus-sign right"></i></label>
                             </div>
@@ -249,6 +249,7 @@
                                 <input class="duration" type="text" name="duration" value="{$promo.settings.animation.duration}" size="50" />
                             </div>
                             <div class="cubic-bezier-link">
+                                <label>{l s='Aniamtion easing' mod='minicpromo'}</label>
                                 <select class="easing" type="text" name="easing" >
                                     <option value="Linear.easeNone">Linear.easeNone</option>
                                     <option value="Power0.easeIn">Power0.easeIn  (linear)</option>
@@ -301,6 +302,7 @@
                                     <option value="Sine.easeOut">Sine.easeOut</option>
                                     <option value="SlowMo.ease">SlowMo.ease</option>
                                 </select>
+                                <p><a href="http://www.greensock.com/get-started-js/#easing" target="_blank">{l s='Click here to go to the animation playground on Greensock`s website' mod='minicpromo'}</a></p>
                             </div>
                         </div>
                     </div>
