@@ -1,6 +1,4 @@
 jQuery(document).ready(function($) {
-	
-
 	// Colorpicker
 	$('.border-color').colorpicker();
 	$('.background-color').colorpicker();
