@@ -1,0 +1,65 @@
+#minic input[type="number"]{
+	width: 100px;
+}
+.minic-content input[type="text"],
+.minic-content textarea{
+	clear: both;
+	width: 100%;
+	max-width: 508px;
+}
+.minic-content .border .border-color{
+	clear: none;
+	width: auto !important;
+}
+.minic-content label i{
+	margin-right: 15px;
+}
+.minic-content label i.right{
+	float: right;
+	margin: 0;
+}
+.minic-content #easing{
+	width: 100%;
+	max-width: 520px;
+}
+.minic-content #easing li{
+	display: inline-block;
+	padding-right: 10px;
+}
+.minic-content .inner{
+	float: left;
+	width: 50%;
+}
+.minic-content .displayed_flag{
+	margin-right: 10px;
+}
+.minic-content .language_flags{
+	position: absolute;
+	z-index: 99;
+}
+.minic-content .text-construct input,
+.minic-content .text-construct textarea{
+	width: 60%;
+}
+.minic-content i.icon-minus-sign{
+	display: none;
+}
+.minic-content i.icon-plus-sign{
+	display: block;
+}
+.minic-content .expanded i.icon-minus-sign{
+	display: block;
+}
+.minic-content .expanded i.icon-plus-sign{
+	display: none;
+}
+
+
+/* --- Accordion Heading --- */
+.accordion-toggle.expanded{
+	background: #ccc;
+	-webkit-transition: background 600s ease-in-out;
+	-moz-transition: background 600s ease-in-out;
+	-o-transition: background 600s ease-in-out;
+	transition: background 600s ease-in-out;
+}

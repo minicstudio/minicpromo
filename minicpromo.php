@@ -415,6 +415,7 @@ class MinicPromo extends Module
 		$this->context->controller->addCSS($this->_path.'views/css/bootstrap-wysihtml5-0.0.2.css');
 		$this->context->controller->addCSS($this->_path.'views/css/color-picker/colorpicker.css');
 		$this->context->controller->addCSS($this->_path.'views/css/admin.css');
+		$this->context->controller->addCSS($this->_path.'views/css/custom.css');
 
 		// JS
 		$this->context->controller->addJquery();
