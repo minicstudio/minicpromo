@@ -2,7 +2,7 @@
 	<form id="form-feed" class="" method="post" action="{$minic.post_action}"  enctype="multipart/form-data">
         <div class="minic-top">
             <h3>{l s='Minicpromo Option' mod='minicpromo'}
-                <a href="http://module.minic.ro/minic-slider-news/using-the-feedback-and-bug-report/" target="_blank" class="help">{l s='help & tips' mod='minicpromo'}</a>
+                <!-- <a href="http://module.minic.ro/minic-slider-news/using-the-feedback-and-bug-report/" target="_blank" class="help">{l s='help & tips' mod='minicpromo'}</a> -->
             </h3>
         </div>
         <div class="minic-content activator-title">
@@ -312,11 +312,7 @@
             <div class="text-construct inner">
                 <!-- Response -->
                 {* include file="{$minic.admin_tpl_path}messages.tpl" id='feedback' *}
-                
-                
-                
             </div>
-            
         </div>
         <div class="minic-content position">
             <div class="module-dimension inner">
