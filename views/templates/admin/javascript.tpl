@@ -23,18 +23,31 @@ jQuery(document).ready(function($) {
 
         // Module list
         if(feed.modules){
-            list = '';
+            var list = '';
             $.each(feed.modules, function() {
+                var price = '<span class="price free">{l s='Price' mod="minicmailchimp"}: '+ this.price +'</span>';
+                var link = '<a href="'+ this.link +'" target="_blank" class="free">{l s='Download' mod='minicskeletonpro'}</a>';
+                if(this.price != 'free'){
+                    price = '<span class="price">{l s='Price' mod="minicmailchimp"}: '+ this.price +'</span>';
+                    link = '<a href="'+ this.link +'" target="_blank" class="buy">{l s='Buy' mod='minicskeletonpro'}</a>';
+                }
+
+                var admin_demo = '';
+                if(this.admin_demo != ''){
+                admin_demo = '<a href="'+ this.admin_demo +'" target="_blank" class="demo">{l s='Admin Demo' mod='minicskeletonpro'}</a>';    
+                }
                 
+
                 list += '<li>';
-                list += '<a href="'+ this.link +'" target="_blank" title="{l s='Click for more details' mod='minicskepetonpro'}">';
+                // list += '<a href="'+ this.link +'" target="_blank" class="description" title="{l s='Click for more details' mod='minicskepetonpro'}">';
                 list += '<img src="'+ this.logo +'">';
-                list += '<p>';
-                list += '<span class="title">'+ this.name +'</span>';
-                list += '<span class="description">'+ this.description +'</span>';
-                list += '<span class="price">'+ this.price +'</span>';
-                list += '</p>';
-                list += '</a>';
+                list += '<span class="title">'+ this.name +'</span><br />';
+                list += this.description +'<br /><br />';
+                // list += '</a>';
+                list += '<a href="'+ this.front_demo +'" target="_blank" class="demo">{l s='Frontend Demo' mod='minicskeletonpro'}</a>';
+                list += admin_demo;
+                list += link;
+                list += price;
                 list += '</li>';
             });
             

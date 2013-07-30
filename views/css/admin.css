@@ -36,7 +36,6 @@
 		cursor: pointer;
 	}
 	#minic input[type="text"],
-	#minic input[type="number"],
 	#minic input[type="file"],
 	#minic select,
 	#minic textarea{
@@ -46,11 +45,7 @@
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
 	}
-	#minic input[type="number"]{
-		width: 100px;
-	}
 	#minic input[type="text"]:hover,
-	#minic input[type="number"]:hover,
 	#minic input[type="file"]:hover,
 	#minic select:hover,
 	#minic textarea:hover{
@@ -113,20 +108,23 @@
 		#menu-top #more-module{
 			position: relative;
 		}
-			#menu-top #more-module span:hover{
+			#menu-top #more-module > span:hover{
 				cursor: pointer;
 			}
 			#menu-top ul#module-list{
 				display: none;
+				z-index: 1;
 				position: absolute;
 				right: 0;
 				top: 15px;
 				width: 400px;
+				max-height: 400px;
+				overflow: hidden;
+				overflow-y: scroll;
 				padding: 10px;
 				background: #ebedf4;
 				border: 1px solid #d7dae1;
 				border-radius: 3px;
-				z-index: 9;
 			}
 			#menu-top #more-module:hover ul{
 				display: block;
@@ -142,15 +140,20 @@
 					margin-right: 50px;
 				}
 				/* Module list style */
-				#menu-top ul#module-list li a{
+				#menu-top ul#module-list li{
 					width: 378px;
 					padding: 5px 10px;
 					margin-bottom: 5px;
-					border: 1px solid transparent;
+					border-bottom: 1px solid #ccc;
 				}
-				#menu-top ul#module-list li:hover a{
-					background-color: #e2e4eb;
-					border-color: #c5c8d1;
+				#menu-top ul#module-list li a{
+					border: none;
+				}
+				#menu-top ul#module-list li a.buy{
+					color: red;
+				}
+				#menu-top ul#module-list li a:hover{
+					text-decoration: underline;
 				}
 				#menu-top ul#module-list img{
 					float: left;
@@ -169,12 +172,13 @@
 				#menu-top ul#module-list .title{
 					font-size: 14px;
 					color: #000;
+					font-weight: bold;
 				}
 				#menu-top ul#module-list .description{
 					font-size: 12px;
 					font-weight: normal;
 				}
-				#menu-top ul#module-list .price{
+				#menu-top ul#module-list .free{
 					font-weight: bold;
 					color: green;
 				}
@@ -281,50 +285,46 @@
 			width: 94%;
 			padding: 50px 3%;	
 		}
-			/* minic content -> input cotnainers */
-			.minic-content div.input-holder{
+			/* minic content -> separator */
+			.minic-content h3.separator{
 				float: left;
 				clear: both;
-				width: 50%;
-				margin: 0 5% 10px 0;
-
+				width: 45%;
+				max-width: 400px;
+				margin: 20px 0 15px 0;
+				padding: 0 5px;
+				border-bottom: 1px solid #cecece;
+				color: #575757;
+				font-size: 16px;
+				font-weight: normal;
 			}
-			.minic-content div.input-holder label{
-				display: block;
-			}
-			.minic-content input[type="text"],
-			.minic-content textarea{
+			/* minic content -> input cotnainers */
+			.minic-content > div.input-holder,
+			.minic-content > div.switch-holder{
+				float: left;
 				clear: both;
-				width: 100%;
-				max-width: 508px;
+				width: 45%;
+				margin: 0 5% 10px 0;
 			}
-			.minic-content .border .border-color{
-				clear: none;
-				width: auto !important;
-			}
-			.minic-content label i{
-				margin-right: 15px;
-			}
-			.minic-content label i.right{
-				float: right;
-				margin: 0;
-				display: none;
-			}
-			.minic-content #easing{
-				width: 100%;
-				max-width: 520px;
-			}
-			.minic-content #easing li{
-				display: inline-block;
-				padding-right: 10px;
-			}
-			.minic-content .collapsed i.icon-plus-sign{
+			.minic-content > div.input-holder label{
 				display: block;
 			}
-			.minic-content .expanded i.icon-minus-sign{
-				display: block;
+			.minic-content > div.switch-holder label{
+				float: left !important;	
+				margin-right: 10px;
+				line-height: 26px;
 			}
-
+			.minic-content > div.input-holder div.multilingual-holder{
+				float: left;
+				width: 94%;
+				max-width: 425px;
+			}
+			.minic-content > div.input-holder input[type="text"],
+			.minic-content > div.input-holder textarea{
+				clear: both;
+				width: 94%;
+				max-width: 400px;
+			}
 			/* minic-content -> minic comment */
 			.minic-content .minic-comments{
 				display: inline-block;
@@ -335,23 +335,6 @@
 				color: #000;
 				font-weight: bold;
 			}
-			.minic-content .inner{
-				float: left;
-				width: 50%;
-			}
-			.minic-content .displayed_flag{
-				margin-right: 10px;
-			}
-			.minic-content .language_flags{
-				position: absolute;
-				z-index: 99;
-			}
-			.inpu
-			.minic-content .text-construct input,
-			.minic-content .text-construct textarea{
-				width: 60%;
-			}
-
 		/* minic bottom */
 		.minic-bottom{
 			display: inline-block;
@@ -364,13 +347,5 @@
 			float: right;
 			margin-left: 10px;
 		}
-		/* --- Accordion Heading --- */
-
-		.accordion-toggle.expanded{
-			background: #ccc;
-			-webkit-transition: background 600s ease-in-out;
-			-moz-transition: background 600s ease-in-out;
-			-o-transition: background 600s ease-in-out;
-			transition: background 600s ease-in-out;
-		}
+		
 	
