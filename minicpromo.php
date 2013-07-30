@@ -34,7 +34,7 @@ class MinicPromo extends Module
 	{
 		$this->name = 'minicpromo';
 		$this->tab = 'front_office_features';
-		$this->version = '1.1';
+		$this->version = '1.1.0';
 		$this->author = 'minic studio';
 		$this->need_instance = 0;
 		$this->ps_versions_compliancy = array('min' => '1.5', 'max' => '1.6'); 
@@ -132,7 +132,7 @@ class MinicPromo extends Module
 			),
 
 			'animation' 	=> array(
-				'duration' 	=> 500,
+				'duration' 	=> 0.5,
 				'easing' 	=> 'Linear.easeNone'
 			),
 			
