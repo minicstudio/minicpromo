@@ -22,6 +22,13 @@
                     </div>
                     <div id="collapseOne" class="accordion-body collapse">
                         <div class="accordion-inner">
+                            <div class="rotate">
+                                <label>{l s='Title rotation' mod='minicpromo'}</label>
+                                <label id="activator-rotation-label" for="activator-rotation">
+                                    <input type="checkbox" id="activator-rotation" name="activator-rotation" value="1">{l s='Enable / Disable rotation' mod='minicpromo'}
+                                </label>
+                                <p>{l s='Old browsers doesnt support this. Use wisely!' mod='minicpromo'}</p>
+                            </div>
                             <div class="width">
                                 <label>{l s='Activator width' mod='minicpromo'}:</label>
                                 <input class="width" type="number" name="activator-width" value="{$promo.settings.dimension_activator.width}" size="50" />
@@ -41,6 +48,9 @@
                             <div class="upload">
                                 <label for="activator-file">Activator background image:</label>
                                 <input type="file" name="activator-file" id="activator-file"><br>
+                                <label id="title-image-label" for="title-image">
+                                    <input type="checkbox" id="title-image" value="1" name="title-image">{l s='Enable / Disable background image' mod='minicpromo'}
+                                </label><br>
                             </div>
                             <div class="padding">
                                 <label>{l s='Padding for activator' mod='minicpromo'}:</label>

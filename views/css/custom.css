@@ -53,8 +53,16 @@
 .minic-content .expanded i.icon-plus-sign{
 	display: none;
 }
-
-
+#activator-rotation-label,
+#title-image-label{
+	font-size: 12px;
+	color: #000;
+	font-weight: normal;
+}
+#activator-rotation,
+#title-image{
+	margin: 0 10px 0 0;
+}
 /* --- Accordion Heading --- */
 .accordion-toggle.expanded{
 	background: #ccc;
