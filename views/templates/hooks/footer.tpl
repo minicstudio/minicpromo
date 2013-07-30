@@ -74,28 +74,27 @@
 		line-height: {$minic_promo.description.line_height};
 		color: {$minic_promo.description.color};
 	}
-	.minicpromo.active .activator{
-		opacity: 0;
-	}
 </style>
 <script type="text/javascript">
 	//<![CDATA[
 	var duration = {$minic_promo.animation.duration};
 	var animEasing = '{$minic_promo.animation.easing}';
-	
-	var minicPromo = $('#minicpromo');
+	var dimension = {$minic_promo.dimension.value};
 
 	{literal}
  	jQuery(document).ready(function($) {
- 		$('.minicpromo').click(function() {
- 			$('this').addClass('active');
- 			TweenLite.to("#minicpromo", duration, {{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}, ease: animEasing});
+		var minicPromo = $('#minicpromo');
+
+ 		var animate = new TweenLite.to("#minicpromo", duration, {{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}, ease: animEasing, paused: true});
+ 		console.log($('#activator').hasClass('active'));
+
+ 		minicPromo.click(function() {
+ 			animate.play();	
  		});
 
  		$(document).mouseup(function(e) {
  			if(e.target != minicPromo){
- 				minicPromo.removeClass('active');
- 				TweenLite.to('#minicpromo', duration, {{/literal}{$minic_promo.animation.axis}: 0{literal}, ease: animEasing});
+ 				animate.reverse();
  			}
  		});	
 	});
@@ -105,7 +104,7 @@
 <div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
 	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" target="{$minic_promo.open_link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
 	<p class="description">{$minic_promo.texts.description|unescape:"html"}</p>
-	<div class="activator">
+	<div id="activator" class="activator active">
 		<h2>{$minic_promo.texts.activator}</h2>
 	</div>
 </div>

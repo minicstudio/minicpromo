@@ -2,18 +2,9 @@
 .minicpromo{
 	position: fixed;
 	z-index: 19;
-	-webkit-transition: all 300ms ease-in-out;
-	   -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
-         -o-transition: all 300ms ease-in-out;
-			transition: all 300ms ease-in-out;
-	/*-webkit-backface-visibility: hidden;*/
-
 }
 .minicpromo .activator{
 	position: absolute;
-/*	width: 30px;
-	height: 120px;*/
 	background: #ccc;
 }
 .minicpromo .activator h2{
