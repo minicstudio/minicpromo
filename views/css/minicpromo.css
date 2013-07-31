@@ -3,11 +3,11 @@
 	position: fixed;
 	z-index: 19;
 }
-.minicpromo .activator{
+#activator{
 	position: absolute;
 	background: #ccc;
 }
-.minicpromo .activator h2{
+#activator h2{
 	text-align: center;
 }
 .position-top{

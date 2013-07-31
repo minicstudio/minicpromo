@@ -41,7 +41,7 @@
 		font-size: {$minic_promo.title.title_size}{$minic_promo.title.title_unit};
 		line-height: {$minic_promo.title.title_line_height};
 	}
-	.minicpromo .activator{
+	#activator{
 		{if $minic_promo_activatorimage}
    			background: url('{$module_dir}upload/minicactivator_background.jpg') center center no-repeat;
    		{/if}
@@ -64,7 +64,7 @@
 		{/if}
 		cursor: pointer;
 	}
-	.minicpromo .activator h2{
+	#activator h2{
 		font-size: {$minic_promo.activator.title_size}{$minic_promo.activator.title_unit};
 		color: {$minic_promo.activator.title_color};
 		line-height: 1.2em;
@@ -108,7 +108,13 @@
  		console.log($('#activator').hasClass('active'));
 
  		minicPromo.click(function() {
- 			animate.play();	
+ 			if($('#activator').hasClass('active')){
+ 				$('#activator').removeClass('active');
+ 				animate.reverse();
+ 			}else{
+ 				animate.play();
+ 				$('#activator').addClass('active');	
+ 			}
  		});
 
  		$(document).mouseup(function(e) {
@@ -123,7 +129,7 @@
 <div class="minicpromo position-{$minic_promo.position}" id="minicpromo">
 	<h2 class="promo-title"><a href="{$minic_promo.texts.link}" target="{$minic_promo.open_link}" title="{$minic_promo.texts.title}" style="color: {$minic_promo.title.title_color};">{$minic_promo.texts.title}</a></h2>
 	<p class="description">{$minic_promo.texts.description|unescape:"html"}</p>
-	<div id="activator" class="activator active">
+	<div id="activator" class="">
 		<h2>{$minic_promo.texts.activator}</h2>
 	</div>
 </div>
