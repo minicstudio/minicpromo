@@ -65,9 +65,19 @@
 		cursor: pointer;
 	}
 	.minicpromo .activator h2{
-		line-height: {$minic_promo.dimension_activator.height}px;
 		font-size: {$minic_promo.activator.title_size}{$minic_promo.activator.title_unit};
-		color: {$minic_promo.activator.title_color}
+		color: {$minic_promo.activator.title_color};
+		line-height: 1.2em;
+		{if $minic_promo.title.title_rotation}
+		position: absolute;
+		left: {$minic_promo.dimension_activator.width}px;
+		bottom: 0;
+		width: {$minic_promo.dimension_activator.height}px;
+		line-height: {$minic_promo.dimension_activator.width}px;
+		-webkit-transform: rotate(-90deg);
+		-webkit-transform-origin: 0 {$minic_promo.dimension_activator.width}px;
+		{/if}
+		padding: 0;
 	}
 	.minicpromo .description{
 		font-size: {$minic_promo.description.size}{$minic_promo.description.unit};

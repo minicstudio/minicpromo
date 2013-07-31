@@ -79,6 +79,7 @@ class MinicPromo extends Module
 
 		$promo_desc = array(
 			'title' => array(
+				'title_rotation' => 1,
 				'title_color' => '#1d1c1b',
 				'title_size' => 24,
 				'title_unit' => 'px',
@@ -86,9 +87,10 @@ class MinicPromo extends Module
 			),
 
 			'activator' => array(
-				'title_color' => '#1d1c1b',
+				'title_color' => '#ffffff',
 				'title_size' => 16,
 				'title_unit' => 'px',
+				'background' => 0
 			),
 
 			'description' => array(
@@ -111,6 +113,7 @@ class MinicPromo extends Module
 			'position' => 'left',
 
 			'background' => '#ccc',
+			'background_image' => 1,
 
 			'dimension' => array(
 				'width' => 300,
@@ -128,7 +131,7 @@ class MinicPromo extends Module
 				'height_unit' => 'px',
 				'padding' => 0,
 				'padding_unit' => 'px',
-				'background' => '#fff',
+				'background' => '#000000',
 			),
 
 			'animation' 	=> array(
@@ -307,6 +310,7 @@ class MinicPromo extends Module
 		$promo_desc = array(
 
 			'title' => array(
+				'title_rotation' => Tools::getValue('title-rotation'),
 				'title_color' => Tools::getValue('title-color'),
 				'title_size' => Tools::getValue('title-font-size'),
 				'title_unit' => Tools::getValue('title-size-unit'),
@@ -316,6 +320,7 @@ class MinicPromo extends Module
 				'title_color' => Tools::getValue('activator-color'),
 				'title_size' => Tools::getValue('activator-font-size'),
 				'title_unit' => Tools::getValue('activator-size-unit'),
+				'background' => Tools::getValue('activator-image'),
 			),
 
 			'description' => array(
@@ -337,6 +342,7 @@ class MinicPromo extends Module
 			'position' => Tools::getValue('position'),
 
 			'background' => Tools::getValue('background-color'),
+			'background_image' => Tools::getValue('background-image'),
 
 			'dimension' => array(
 				'width' => Tools::getValue('width'),
@@ -478,8 +484,8 @@ class MinicPromo extends Module
 
 
 		$this->smarty->assign('minic_promo', $settings);
-		$this->smarty->assign('minic_promo_image', (file_exists(dirname(__FILE__).'/upload/minicpromo_background.png')) ? true : false);
-		$this->smarty->assign('minic_promo_activatorimage', (file_exists(dirname(__FILE__).'/upload/minicactivator_background.jpg')) ? true : false);
+		$this->smarty->assign('minic_promo_image', ($settings['background_image'] == 1 && file_exists(dirname(__FILE__).'/upload/minicpromo_background.png')) ? true : false);
+		$this->smarty->assign('minic_promo_activatorimage', ($settings['activator']['background'] == 1 && file_exists(dirname(__FILE__).'/upload/minicactivator_background.jpg')) ? true : false);
 
 		return $this->display(__FILE__, 'views/templates/hooks/footer.tpl');
 	}

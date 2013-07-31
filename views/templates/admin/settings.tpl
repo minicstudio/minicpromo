@@ -25,7 +25,7 @@
                             <div class="rotate">
                                 <label>{l s='Title rotation' mod='minicpromo'}</label>
                                 <label id="activator-rotation-label" for="activator-rotation">
-                                    <input type="checkbox" id="activator-rotation" name="activator-rotation" value="1">{l s='Enable / Disable rotation' mod='minicpromo'}
+                                    <input type="checkbox" id="activator-rotation" name="title-rotation" value="1" {if $promo.settings.title.title_rotation}checked="checked"{/if}>{l s='Enable / Disable rotation' mod='minicpromo'}
                                 </label>
                                 <p>{l s='Old browsers doesnt support this. Use wisely!' mod='minicpromo'}</p>
                             </div>
@@ -49,7 +49,7 @@
                                 <label for="activator-file">Activator background image:</label>
                                 <input type="file" name="activator-file" id="activator-file"><br>
                                 <label id="title-image-label" for="title-image">
-                                    <input type="checkbox" id="title-image" value="1" name="title-image">{l s='Enable / Disable background image' mod='minicpromo'}
+                                    <input type="checkbox" id="title-image" value="1" name="activator-image" {if $promo.settings.activator.background}checked="checked"{/if}>{l s='Enable / Disable background image' mod='minicpromo'}
                                 </label><br>
                             </div>
                             <div class="padding">
@@ -199,6 +199,9 @@
                             <div class="upload">
                                 <label for="file">Background image:</label>
                                 <input type="file" name="file" id="file"><br>
+                                <label id="background-image-label" for="background-image">
+                                    <input type="checkbox" id="background-image" value="1" name="background-image" {if $promo.settings.background_image}checked="checked"{/if}>{l s='Enable / Disable background image' mod='minicpromo'}
+                                </label>
                             </div>
                             <div class="border">
                                 <label>{l s='Border (size, style, color)' mod='minicpromo'}:</label>
