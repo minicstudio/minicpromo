@@ -74,8 +74,17 @@
 		bottom: 0;
 		width: {$minic_promo.dimension_activator.height}px;
 		line-height: {$minic_promo.dimension_activator.width}px;
+		-moz-transform: rotate(-90deg);
 		-webkit-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+
+		-moz-transform-origin: 0 {$minic_promo.dimension_activator.width}px;
 		-webkit-transform-origin: 0 {$minic_promo.dimension_activator.width}px;
+		-o-transform-origin: 0 {$minic_promo.dimension_activator.width}px;
+		-ms-transform-origin: 0 {$minic_promo.dimension_activator.width}px;
+		transform-origin: 0 {$minic_promo.dimension_activator.width}px;
 		{/if}
 		padding: 0;
 	}
