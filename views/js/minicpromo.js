@@ -8,8 +8,12 @@ jQuery(document).ready(function($) {
 	$('.description').each(function() {
         $('#'+$(this).attr('id')).wysihtml5();
     });
-	$('.accordion-group').click(function() {
-		$('.accordion-toggle.expanded').removeClass('expanded');
-		$(this).find('.accordion-toggle').addClass('expanded');
+	$('.accordion-toggle').click(function() {
+		if($(this).hasClass('expanded')){
+			$(this).removeClass('expanded');
+		}else{
+			$('.accordion-toggle.expanded').removeClass('expanded');
+			$(this).addClass('expanded');	
+		}
 	});
 });
