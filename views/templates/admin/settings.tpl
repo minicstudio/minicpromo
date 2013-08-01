@@ -146,7 +146,7 @@
                                 
                                 {foreach from=$promo.languages item=language}
                                     <div id="description_{$language.id_lang}" style="display: {if $language.id_lang == $promo.default_lang}block{else}none{/if};">
-                                        <textarea class="description" id="bootstrap-wysi-editor-{$language.id_lang}" type="text" name="description_{$language.id_lang}" rows="10" cols="63">{$promo.texts.{$language.id_lang}.description|unescape:"html"}</textarea>
+                                        <textarea class="description" id="bootstrap-wysi-editor-{$language.id_lang}" type="text" name="description_{$language.id_lang}" rows="10" cols="66">{$promo.texts.{$language.id_lang}.description|unescape:"html"}</textarea>
                                     </div>
                                 {/foreach}
                             </div>

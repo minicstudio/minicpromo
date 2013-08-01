@@ -6,7 +6,10 @@ jQuery(document).ready(function($) {
 	$('.activator-color').colorpicker();
 	$('.description-color').colorpicker();
 	$('.description').each(function() {
-        $('#'+$(this).attr('id')).wysihtml5();
+        $('#'+$(this).attr('id')).wysihtml5({
+			'html': true,
+			'color': true
+        });
     });
 	$('.accordion-toggle').click(function() {
 		if($(this).hasClass('expanded')){
