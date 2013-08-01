@@ -105,9 +105,8 @@
 		var minicPromo = $('#minicpromo');
 
  		var animate = new TweenLite.to("#minicpromo", duration, {{/literal}{$minic_promo.animation.axis}: {$minic_promo.dimension.value}{literal}, ease: animEasing, paused: true});
- 		console.log($('#activator').hasClass('active'));
 
- 		minicPromo.click(function() {
+ 		$('#activator').click(function() {
  			if($('#activator').hasClass('active')){
  				$('#activator').removeClass('active');
  				animate.reverse();
@@ -116,12 +115,16 @@
  				$('#activator').addClass('active');	
  			}
  		});
-
- 		$(document).mouseup(function(e) {
- 			if(e.target != minicPromo){
- 				animate.reverse();
+ 		$(document).click(function() {
+ 			if($('#activator').hasClass('active')){
+ 				$('#activator').removeClass('active');
+ 				animate.reverse();	
  			}
- 		});	
+		});
+
+		$("#minicpromo").click(function(event) {
+		    event.stopPropagation();
+		});
 	});
 	{/literal}
 	//]]>
