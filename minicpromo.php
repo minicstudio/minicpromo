@@ -79,32 +79,32 @@ class MinicPromo extends Module
 
 		$promo_desc = array(
 			'title' => array(
-				'title_rotation' => 1,
-				'title_color' => '#1d1c1b',
-				'title_size' => 24,
+				'title_rotation' => 0,
+				'title_color' => '#000000',
+				'title_size' => 18,
 				'title_unit' => 'px',
 				'title_line_height' => 1
 			),
 
 			'activator' => array(
 				'title_color' => '#ffffff',
-				'title_size' => 16,
+				'title_size' => 14,
 				'title_unit' => 'px',
-				'background' => 0
+				'background' => 1
 			),
 
 			'description' => array(
-				'size' => 16,
-				'color' => '#1d1c1b',
+				'size' => 14,
+				'color' => '#000000',
 				'unit' => 'px',
 				'line_height' => 1,
 			),
 
 			'border' => array(
-				'border_width' => '1',
+				'border_width' => '0',
 				'border_style' => 'solid',
 				'border_color' => '#cecece',
-				'border_radius' => 4,
+				'border_radius' => 0,
 				'border_radius_unit' => 'px'
  			),
 
@@ -112,22 +112,22 @@ class MinicPromo extends Module
 
 			'position' => 'left',
 
-			'background' => '#ccc',
+			'background' => '#cccccc',
 			'background_image' => 1,
 
 			'dimension' => array(
-				'width' => 300,
+				'width' => 462,
 				'width_unit' => 'px',
-				'height' => 250,
+				'height' => 362,
 				'height_unit' => 'px',
-				'padding' => 20,
+				'padding' => 30,
 				'padding_unit' => 'px'
 			),
 
 			'dimension_activator' => array(
-				'width' => 40,
+				'width' => 25,
 				'width_unit' => 'px',
-				'height' => 250,
+				'height' => 128,
 				'height_unit' => 'px',
 				'padding' => 0,
 				'padding_unit' => 'px',
@@ -146,10 +146,10 @@ class MinicPromo extends Module
 
 		foreach ($languages as $key => $lang) {
 			$texts[$lang['id_lang']] = serialize(array(
-				'activator' 	=> 'Promotion',
-				'title' 		=> 'Promotion title',
-				'description' 	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				'link' 			=> 'http://minic.ro/en',
+				'activator' 	=> '',
+				'title' 		=> 'minic promo',
+				'description' 	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'link' 			=> '#',
 			));	
 		}
 		
@@ -425,10 +425,10 @@ class MinicPromo extends Module
 
 		// JS
 		$this->context->controller->addJquery();
-		$this->context->controller->addJS($this->_path.'views/js/wysihtml5-0.3.0.js');
+		$this->context->controller->addJS($this->_path.'views/js/wysihtml5-0.3.0.min.js');
 		$this->context->controller->addJS($this->_path.'views/js/bootstrap.js');
 		$this->context->controller->addJS($this->_path.'views/js/color-picker/bootstrap-colorpicker.js');
-		$this->context->controller->addJS($this->_path.'views/js/bootstrap-wysihtml5-0.0.2.js');
+		$this->context->controller->addJS($this->_path.'views/js/bootstrap-wysihtml5-0.0.2.min.js');
 		$this->context->controller->addJS($this->_path.'views/js/admin.js');
 		$this->context->controller->addJS($this->_path.'views/js/'.$this->name.'.js');	
 		
